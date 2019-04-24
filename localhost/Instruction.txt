@@ -1,0 +1,10 @@
+Якщо потрібно створити продукт(дизайн = 0)
+1. Перейти по ссилці https://localhost/admin/loginadmin.php 
+Логін root
+Пароль 123
+2. Перейти по ссилці https://localhost/admin/createproduct.php 
+3. Щоб показати тег топ перейти по ссилці https://localhost/admin/productslist.php 
+У вікні редагування знизу можна поставити теги
+ 
+
+ШОБ ВІДКРИТИ НАШУ НАРАБОТКУ https://localhost/admin/index.php
