@@ -7,7 +7,7 @@ a {
 }
 
 body {
-  background-color: #eaeaea;
+  background-color: #4CBFC0;
   font-family: 'Montserrat', sans-serif;
   font-family: 'PT Serif', serif;
   font-size: 1.14vmax;
@@ -21,12 +21,12 @@ body {
 }
 
 .dark {
-  background-color: #2e2e30;
+  background-color: #C13E59;
   color: #fff;
 }
 
 .grey {
-  background-color: #838d8f;
+  background-color: #F5788E;
   color: #fff;
 }
 
@@ -369,7 +369,7 @@ main {
   margin-bottom: 0.83vmax;
 }
 
-.list_filter li:nth-of-type(3n) {
+.list_filter li:nth-of-type(4n) {
   margin-right: 0;
 }
 

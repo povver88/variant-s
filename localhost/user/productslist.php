@@ -53,7 +53,7 @@ $resultProduct = mysqli_query($db,"SELECT * FROM products"); ?>
                                 <th class="cell100 column1"><?php echo "<img src='../photos/product/{$row['Photo']}.jpg' heigth=200 width=150 alt=''/>" ?></th>
                                 <form action="addcart.php" method="get">
                                 <th class="cell100 column1">
-                                    <a href="addcart.php?id=<?php echo $row['Id']?>"><input type="button" value="In cart"></a>
+                                    <a href="addcart.php?id=<?php echo $row['Id']?>"><input type="submit" value="In cart"></a>
                                 </th>
                                 </form>
                             </tr>

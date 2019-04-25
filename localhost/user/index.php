@@ -1,12 +1,8 @@
 <?php
 session_start();
-if($_SESSION['SuccessAdmin'] != "True")
-{
-    $_SESSION['AdminError'] = "<li>Неправильный пароль или логин</li>";
-header('location: loginadmin.php');
-}
 $db = mysqli_connect('localhost', 'root', '', 'users');
 $resultProduct = mysqli_query($db,"SELECT * FROM products");
+$cart = $_SESSION['idcart'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -37,12 +33,39 @@ $resultProduct = mysqli_query($db,"SELECT * FROM products");
           <path d="M360.731,229.075l-225.1-225.1c-5.3-5.3-13.8-5.3-19.1,0s-5.3,13.8,0,19.1l215.5,215.5l-215.5,215.5
       		c-5.3,5.3-5.3,13.8,0,19.1c2.6,2.6,6.1,4,9.5,4c3.4,0,6.9-1.3,9.5-4l225.1-225.1C365.931,242.875,365.931,234.275,360.731,229.075z
       		" />
-      
+
       </svg>
 
     </div>
+      <?php foreach ($cart as $item) : ?>
+      <?php $resultCart = mysqli_query($db,"SELECT * FROM products WHERE id = '$item'"); ?>
+      <?php while($row = mysqli_fetch_array($resultCart)) : ?>
+          <a class="product box main_flex__nowrap flex__jcontent_center flex__align-items_center">
+              <div class="front">
+                  <div class="img_product">
+                      <?php echo "<img src='../photos/product/{$row['Photo']}.jpg' heigth=180 width=140 alt='texas'/>" ?>
+                  </div>
+                  <h2><?php echo $row['Name']?></h2>
+                  <p><?php echo $row['Brend']?></p>
+              </div>
+              <div class="back">
+                  <p class="price"><?php echo $row['Price']?></p>
+                  <form action="deletecart.php" method="post">
+                      <input type="hidden" name="id" value="<?php echo $row['Id']?>"><button type="submit" class="btn btn-outline-success btn-lg">Видалити з корзини</button>
+                  </form>
+                  <form action="totalpricecart.php" method="post">
+                      <input type="hidden" name="id" value="<?php echo $row['Id']?>"><input type="text" name="count" placeholder="Введіть кількість"><button type="submit" class="btn btn-outline-success btn-lg">Підтвердити</button>
+                  </form>
+                  <p><?php echo $_SESSION['TotalOrderPrice'][$row['Id']]?></p>
+              </div>
+          </a>
+      <?php endwhile;?>
+      <?php endforeach; ?>
     <div class="content_cart"></div>
-    <button id="order" type="button">Order</button>
+      <form action="ordercomplete.php" method="post">
+          <button id="order" type="submit">Order</button>
+      </form>
+
   </div>
 
   <header class="dark">
@@ -151,7 +174,9 @@ $resultProduct = mysqli_query($db,"SELECT * FROM products");
     </div>
     <div class="back">
       <p class="price"><?php echo $row['Price']?></p>
-      <form action="createOrder.html"><button type="submit" class="btn btn-outline-success btn-lg">Придбати</button></form>
+      <form action="addcart.php" method="post">
+          <input type="hidden" name="id" value="<?php echo $row['Id']?>"><button type="submit" class="btn btn-outline-success btn-lg">Додати до корзини</button>
+      </form>
     </div>
     </a>
     <?php endwhile;?>
