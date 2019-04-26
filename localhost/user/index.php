@@ -2,7 +2,8 @@
 session_start();
 $db = mysqli_connect('localhost', 'root', '', 'users');
 $resultProduct = mysqli_query($db,"SELECT * FROM products");
-$cart = $_SESSION['idcart'];
+$user = $_SESSION['user']['Login'];
+$cart = $_SESSION[$user];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,8 +20,6 @@ $cart = $_SESSION['idcart'];
   <script src="js/jquery-1.8.3.js"></script>
   <script src="js/jquery-ui-1.9.2.custom.min.js"></script>
   <script src="js/control.js"></script>
-
-
 </head>
 
 <body>
@@ -37,6 +36,7 @@ $cart = $_SESSION['idcart'];
       </svg>
 
     </div>
+      <?php if(isset($cart)) : ?>
       <?php foreach ($cart as $item) : ?>
       <?php $resultCart = mysqli_query($db,"SELECT * FROM products WHERE id = '$item'"); ?>
       <?php while($row = mysqli_fetch_array($resultCart)) : ?>
@@ -46,21 +46,33 @@ $cart = $_SESSION['idcart'];
                       <?php echo "<img src='../photos/product/{$row['Photo']}.jpg' heigth=180 width=140 alt='texas'/>" ?>
                   </div>
                   <h2><?php echo $row['Name']?></h2>
-                  <p><?php echo $row['Brend']?></p>
+                  <p><?php
+                      if(intval($row['Count'])>0)
+                      {
+                          echo "Є в наявності";
+                      }
+                      else
+                      {
+                          echo "Немає в наявності";
+                      }
+                      ?></p>
               </div>
               <div class="back">
                   <p class="price"><?php echo $row['Price']?></p>
                   <form action="deletecart.php" method="post">
                       <input type="hidden" name="id" value="<?php echo $row['Id']?>"><button type="submit" class="btn btn-outline-success btn-lg">Видалити з корзини</button>
                   </form>
+
                   <form action="totalpricecart.php" method="post">
-                      <input type="hidden" name="id" value="<?php echo $row['Id']?>"><input type="text" name="count" placeholder="Введіть кількість"><button type="submit" class="btn btn-outline-success btn-lg">Підтвердити</button>
+                      <input type="hidden" name="id" value="<?php echo $row['Id']?>">
+                      <input type="text" name="count" placeholder="Введіть кількість">
+                      <button type="submit" class="btn btn-outline-success btn-lg">Підтвердити</button>
                   </form>
-                  <p><?php echo $_SESSION['TotalOrderPrice'][$row['Id']]?></p>
               </div>
           </a>
       <?php endwhile;?>
       <?php endforeach; ?>
+      <?php endif; ?>
     <div class="content_cart"></div>
       <form action="ordercomplete.php" method="post">
           <button id="order" type="submit">Order</button>
@@ -170,7 +182,16 @@ $cart = $_SESSION['idcart'];
         <?php echo "<img src='../photos/product/{$row['Photo']}.jpg' heigth=180 width=140 alt='texas'/>" ?>
       </div>
       <h2><?php echo $row['Name']?></h2>
-      <p><?php echo $row['Brend']?></p>
+              <p><?php
+                  if(intval($row['Count'])>0)
+                  {
+                      echo "Є в наявності";
+                  }
+                  else
+                  {
+                      echo "Немає в наявності";
+                  }
+                  ?></p>
     </div>
     <div class="back">
       <p class="price"><?php echo $row['Price']?></p>

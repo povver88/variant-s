@@ -3,6 +3,7 @@ session_start();
 $db = mysqli_connect('localhost', 'root', '', 'users');
 if(isset($_POST['id']))
 {
+    $user = $_SESSION['user']['Login'];
     $id = intval($_POST['id']);
     $query = "SELECT * From products WHERE id='$id'";
     $results = mysqli_query($db, $query);
@@ -10,9 +11,8 @@ if(isset($_POST['id']))
         $products = mysqli_fetch_assoc($results);
     }
     $count = intval($_POST['count']);
-    $_SESSION['OrderId'][$id] = $id;
-    $_SESSION['OrderCount'][$id] = $count;
-    $_SESSION['TotalOrderPrice'][$id] = $count * $products['Price'];
+    $_SESSION['OrderId'][$user][$id] = $id;
+    $_SESSION['OrderCount'][$user][$id] = $count;
 }
 header("location: index.php")
 ?>
