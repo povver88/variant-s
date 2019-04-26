@@ -59,8 +59,8 @@ $resultProduct = mysqli_query($db,"SELECT * FROM products");
                                     <th class="cell100 column1"><?php echo $row['Price']?></th>
                                     <th class="cell100 column1"><?php echo "<img src='../photos/product/{$row['Photo']}.jpg' heigth=200 width=150 alt=''/>" ?></th>
                                     <th class="cell100 column1">
-                                        <form action="editProductForm.php" method="get">
-                                        <a href="editProductForm.php?name=<?php echo $row['Name'] ?>"><input type="button" value="Edit"></a>
+                                        <form action="producteditform.php" method="get">
+                                        <a href="producteditform.php?name=<?php echo $row['Name'] ?>"><input type="button" value="Edit"></a>
                                         </form>
                                     </th>
                                     <th class="cell100 column1">
