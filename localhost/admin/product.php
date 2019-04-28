@@ -8,6 +8,7 @@ if (isset($_POST)) {
     $price = e($_POST['price']);
     $count = e($_POST['count']);
     $category = e($_POST['dropinv']);
+    $description = e($_POST['description']);
 
 
     $photo= $_FILES['photo'];
@@ -28,8 +29,8 @@ if (isset($_POST)) {
     move_uploaded_file( $_FILES['aphoto']['tmp_name'], $target);
 
 
-    $query = "INSERT INTO products (name, article, brend, price, count, photo, articlephoto, category, availability, topprice, topsell) 
-					  VALUES('$name', '$article', '$brend','$price', '$count', '$nameproduct', '$namearticle', '$category', 1, 0, 0)";
+    $query = "INSERT INTO products (name, article, brend, price, count, photo, articlephoto, category, availability, topprice, topsell, description) 
+					  VALUES('$name', '$article', '$brend','$price', '$count', '$nameproduct', '$namearticle', '$category', 1, 0, 0, '$description')";
     mysqli_query($db, $query);
     header('location: createproduct.php');
 }

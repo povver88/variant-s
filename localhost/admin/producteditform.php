@@ -47,6 +47,7 @@ function e($val){
                 <div class="table100-firstcol">
                     <div class="dropdown">
                         <form action="productCRUD/productedit.php" method="post" enctype="multipart/form-data">
+                            <input type="hidden" name="id" value="<?php $_SESSION['editproduct']['Id'] ?>">
                             <p>Name: <input type="text" name="name" value="<?php $_SESSION['editproduct']['Name'] ?>"></p>
                             <p>Article: <input type="text" name="article" value="<?php $_SESSION['editproduct']['Article'] ?>"></p>
                             <p>Brend: <input type="text" name="brend" value="<?php $_SESSION['editproduct']['Brend'] ?>"></p>
@@ -54,6 +55,7 @@ function e($val){
                             <p>Count: <input type="text" name="count" value="<?php $_SESSION['editproduct']['Count'] ?>"></p>
                             <p>Photo: <input type="file" name="photo"></p>
                             <p>Article Photo: <input type="file" name="aphoto"></p>
+                            <p>Description: <textarea name="description"><?php $_SESSION['editproduct']['Description'] ?></textarea></p>
                             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Dropdown button
                             </button>

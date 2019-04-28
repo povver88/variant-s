@@ -1,7 +1,8 @@
 <?php
 session_start();
 $db = mysqli_connect('localhost', 'root', '', 'users');
-if (isset($_POST['name'])) {
+if (isset($_POST)) {
+    $id = $_SESSION['editproduct']['Id'];
     $name = $_SESSION['editproduct']['Name'];
     $article = $_SESSION['editproduct']['Article'];
     $brend = $_SESSION['editproduct']['Brend'];
@@ -10,6 +11,7 @@ if (isset($_POST['name'])) {
     $category = $_SESSION['editproduct']['Category'];
     $nameproduct=$_SESSION['editproduct']['Photo'];
     $namearticle=$_SESSION['editproduct']['ArticlePhoto'];
+    $description = $_SESSION['editproduct']['Description'];
     $topprice = e($_POST['topprice'])?1:0;
     $topsell = e($_POST['topsell'])?1:0;
 
@@ -61,7 +63,7 @@ if (isset($_POST['name'])) {
         $count = e($_POST['count']);
     }
 
-    $query = "UPDATE products SET name='$name', article='$article', brend='$brend', price='$price', count='$count', category='$category', photo='$nameproduct', articlephoto='$namearticle', topprice='$topprice', topsell='$topsell' WHERE name='$name'";
+    $query = "UPDATE products SET name='$name', article='$article', brend='$brend', price='$price', count='$count', category='$category', photo='$nameproduct', articlephoto='$namearticle', topprice='$topprice', topsell='$topsell', description='$description' WHERE id='$id'";
     $results = mysqli_query($db, $query);
     $_SESSION['editproduct']['Name'] = $name;
     $_SESSION['editproduct']['Article'] = $article;
@@ -71,7 +73,8 @@ if (isset($_POST['name'])) {
     $_SESSION['editproduct']['Category'] = $category;
     $_SESSION['editproduct']['Photo'] = $nameproduct;
     $_SESSION['editproduct']['ArticlePhoto'] = $namearticle;
-    header('location: ../editProductForm.php');
+    $_SESSION['editproduct']['Description'] = $description;
+    header('location: ../productslist.php');
 }
 
 function e($val){

@@ -46,6 +46,7 @@ if($_SESSION['SuccessAdmin'] != "True")
                             <p>Count: <input type="text" name="count"></p>
                             <p>Photo: <input type="file" name="photo"></p>
                             <p>Article Photo: <input type="file" name="aphoto"></p>
+                            <p>Description: <textarea name="description"></textarea></p>
                             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Dropdown button
                             </button>

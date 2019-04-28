@@ -4,6 +4,15 @@ $db = mysqli_connect('localhost', 'root', '', 'users');
 $resultProduct = mysqli_query($db,"SELECT * FROM products");
 $user = $_SESSION['user']['Login'];
 $cart = $_SESSION[$user];
+$loadmore = 2;
+if(isset($_POST['more']))
+{
+    $loadmore = intval($_POST['more']);
+}
+if(isset($_POST['less']))
+{
+    $loadmore = $_POST['less'];
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,7 +27,8 @@ $cart = $_SESSION[$user];
   <link href="https://fonts.googleapis.com/css?family=PT+Serif&amp;subset=cyrillic,cyrillic-ext,latin-ext" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
   <script src="js/jquery-1.8.3.js"></script>
-  <script src="js/jquery-ui-1.9.2.custom.min.js"></script>
+
+    <script src="js/jquery-ui-1.9.2.custom.min.js"></script>
   <script src="js/control.js"></script>
 </head>
 
@@ -165,6 +175,7 @@ $cart = $_SESSION[$user];
 
       <div class="list_product main_flex flex__jcontent_start flex__align-items_start">
         <?php while($row = mysqli_fetch_array($resultProduct)) : ?>
+        <?php if($row['Id']<$loadmore) : ?>
         <a class="product box main_flex__nowrap flex__jcontent_center flex__align-items_center">
           <div class="front">
             <?php
@@ -200,11 +211,22 @@ $cart = $_SESSION[$user];
       </form>
     </div>
     </a>
+          <?php endif; ?>
     <?php endwhile;?>
     </div>
-    <button id="load_more" type="button">
+        <form action="index.php" method="post">
+            <input type="hidden" name="more" value="<?php echo $loadmore+=1; ?>">
+    <button id="load_more" type="submit">
       Load More
     </button>
+        </form>
+
+        <form action="index.php" method="post">
+            <input type="hidden" name="less" value="2">
+            <button id="load_more" type="submit">
+                Load Less
+            </button>
+        </form>
     </div>
 
 
