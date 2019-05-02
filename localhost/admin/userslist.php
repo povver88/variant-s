@@ -8,17 +8,6 @@ if($_SESSION['SuccessAdmin'] != "True")
 $db = mysqli_connect('localhost', 'root', '', 'users');
 $resultUser = mysqli_query($db,"SELECT * FROM user");
 $resultMeneg = mysqli_query($db,"SELECT * FROM managers");
-    $name = "tregter";
-    if ( !empty($name) ) {
-        $query = "SELECT * FROM products WHERE name='$name'";
-        $res = mysqli_query($db,$query);
-        if ( mysqli_num_rows( $res ) == 1 ) {
-            $image = mysqli_fetch_assoc($res);
-            $_SESSION['productsPhoto']=$image;
-        }
-    }
-$pname = $_SESSION['productsPhoto']['Photo'];
-echo "<img src='../photos/product/{$pname}.jpg' heigth=500 width=500 alt=''/>"
 ?>
 
 <!DOCTYPE html>

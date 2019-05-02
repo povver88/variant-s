@@ -68,8 +68,8 @@ function e($val){
                                 <a class="dropdown-item" ><input type="radio" name="dropinv" value="Декор">Декор</a>
                                 <a class="dropdown-item" ><input type="radio" name="dropinv" value="Різне">Різне</a>
                             </div>
-                            <p><input type="checkbox" name="topprice">Top Price</p>
-                            <p><input type="checkbox" name="topsell">Top Sell</p>
+                            <p><input type="checkbox" name="topprice" value="On" <?php if($_SESSION['editproduct']['TopPrice']=='1'){ echo "checked";} ?>>Top Price</p>
+                            <p><input type="checkbox" name="topsell" value="On" <?php if($_SESSION['editproduct']['TopSell']=='1'){ echo "checked";} ?>>Top Sell</p>
                             <input type="submit" value="Ok">
                         </form>
                     </div>

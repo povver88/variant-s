@@ -1,7 +1,19 @@
 <?php
 session_start();
 $db = mysqli_connect('localhost', 'root', '', 'users');
-$resultProduct = mysqli_query($db,"SELECT * FROM products");
+$resultProduct = mysqli_query($db,"SELECT * FROM products ORDER BY availability DESC , topsell DESC, topprice DESC ");
+$resultDownProduct = mysqli_query($db,"SELECT * FROM products WHERE count='0'");
+$resultUpProduct = mysqli_query($db,"SELECT * FROM products WHERE count>'0'");
+while($row = mysqli_fetch_array($resultDownProduct))
+{
+    $id = $row['Id'];
+    $results = mysqli_query($db, "UPDATE products SET availability='0' WHERE id='$id'");
+}
+while($row = mysqli_fetch_array($resultUpProduct))
+{
+    $id = $row['Id'];
+    $results = mysqli_query($db, "UPDATE products SET availability='1' WHERE id='$id'");
+}
 $user = $_SESSION['user']['Login'];
 $cart = $_SESSION[$user];
 $loadmore = 2;
@@ -13,6 +25,7 @@ if(isset($_POST['less']))
 {
     $loadmore = $_POST['less'];
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -174,8 +187,8 @@ if(isset($_POST['less']))
     <div id="right_bar">
 
       <div class="list_product main_flex flex__jcontent_start flex__align-items_start">
-        <?php while($row = mysqli_fetch_array($resultProduct)) : ?>
-        <?php if($row['Id']<$loadmore) : ?>
+        <?php $i=2; while($row = mysqli_fetch_array($resultProduct)) : ?>
+        <?php if($i<$loadmore) : ?>
         <a class="product box main_flex__nowrap flex__jcontent_center flex__align-items_center">
           <div class="front">
             <?php
@@ -211,7 +224,7 @@ if(isset($_POST['less']))
       </form>
     </div>
     </a>
-          <?php endif; ?>
+          <?php endif; $i++; ?>
     <?php endwhile;?>
     </div>
         <form action="index.php" method="post">

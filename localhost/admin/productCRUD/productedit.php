@@ -12,8 +12,10 @@ if (isset($_POST)) {
     $nameproduct=$_SESSION['editproduct']['Photo'];
     $namearticle=$_SESSION['editproduct']['ArticlePhoto'];
     $description = $_SESSION['editproduct']['Description'];
-    $topprice = e($_POST['topprice'])?1:0;
-    $topsell = e($_POST['topsell'])?1:0;
+    $topprice = $_SESSION['editproduct']['TopPrice'];
+    $topsell = $_SESSION['editproduct']['TopSell'];
+
+
 
     if(!empty($_FILES['photo']['name']))
     {
@@ -38,6 +40,15 @@ if (isset($_POST)) {
         move_uploaded_file( $_FILES['aphoto']['tmp_name'], $target);
     }
 
+    if(!empty($_POST['topsell']))
+    {
+        if()//ДОписати проверку на Эс присвоъти значеея
+        $topsell = intval($_POST['topsell']);
+    }
+    if(!empty($_POST['topprice']))
+    {
+        $topprice = intval($_POST['topprice']);
+    }
     if(!empty($_POST['dropinv']))
     {
         $category = e($_POST['dropinv']);
@@ -74,6 +85,8 @@ if (isset($_POST)) {
     $_SESSION['editproduct']['Photo'] = $nameproduct;
     $_SESSION['editproduct']['ArticlePhoto'] = $namearticle;
     $_SESSION['editproduct']['Description'] = $description;
+    $_SESSION['editproduct']['TopPrice'] = $topprice;
+    $_SESSION['editproduct']['TopSell'] = $topsell;
     header('location: ../productslist.php');
 }
 
