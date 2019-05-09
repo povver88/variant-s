@@ -7,7 +7,7 @@ a {
 }
 
 body {
-  background-color: #4CBFC0;
+  background-color: #9FCAF5;
   font-family: 'Montserrat', sans-serif;
   font-family: 'PT Serif', serif;
   font-size: 1.14vmax;
@@ -21,7 +21,7 @@ body {
 }
 
 .dark {
-  background-color: #C13E59;
+  background-color: #0AA7CC;
   color: #fff;
 }
 
@@ -151,7 +151,7 @@ nav a {
 }
 
 #main_nav a:hover {
-  background-color: #3c3d41;
+  background-color: #FF94FF;
   color: #fff;
 }
 
