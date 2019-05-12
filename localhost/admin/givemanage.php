@@ -15,7 +15,8 @@ if (isset($_POST['login'])) {
         $pass = $_SESSION['user']['Pass'];
         $login = $_SESSION['user']['Login'];
         $opt = $_SESSION['user']['Opt'];
-        $query = mysqli_query($db,"INSERT INTO managers(login, phone, email, pass, usertype, opt) VALUES ('$login', '$phone', '$email', '$pass', 'Manager', '$opt')");
+        $sell = $_SESSION['user']['Sell'];
+        $query = mysqli_query($db,"INSERT INTO managers(login, phone, email, pass, usertype, opt, sell) VALUES ('$login', '$phone', '$email', '$pass', 'Manager', '$opt', '$sell')");
         $query = mysqli_query($db,"DELETE From user WHERE login='$login'");
     }
     header('location: userslist.php');

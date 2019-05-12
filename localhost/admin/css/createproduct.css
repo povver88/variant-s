@@ -1,0 +1,13 @@
+.limiter  {
+margin-left: 40%;
+margin-top: 2%;
+}
+
+.btn:hover {
+	cursor: pointer;
+}
+
+.submit {
+	width: 171px;
+	margin-top: 5px;
+}

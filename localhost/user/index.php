@@ -31,15 +31,15 @@ if(isset($_POST['less']))
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/jquery-ui-1.9.2.custom.css">
-  <link href="https://fonts.googleapis.com/css?family=PT+Serif&amp;subset=cyrillic,cyrillic-ext,latin-ext" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
-  <script src="js/jquery-1.8.3.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/jquery-ui-1.9.2.custom.css">
+    <link href="https://fonts.googleapis.com/css?family=PT+Serif&amp;subset=cyrillic,cyrillic-ext,latin-ext" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+    <script src="js/jquery-1.8.3.js"></script>
 
     <script src="js/jquery-ui-1.9.2.custom.min.js"></script>
   <script src="js/control.js"></script>
@@ -104,55 +104,142 @@ if(isset($_POST['less']))
   </div>
 
   <header class="dark">
-    <div id="top">
-      <div class="wrap main_flex__nowrap flex__align-items_center flex__jcontent_between">
+      <div id="top">
+          <div class="wrap main_flex__nowrap flex__align-items_center flex__jcontent_between">
 
-        <div class="main_flex__nowrap flex__align-items_center">
+              <div class="main_flex__nowrap flex__align-items_center">
+                  <style>
+                      .regButton {
+                          background: #fff;
+                          border: 1px solid #ccc;
+                          border-radius: 3px;
+                          padding: 6px 24px;
+                          cursor: pointer;
+                      }
 
-          <div id="sign" class="btn main_flex__nowrap flex__align-items_center flex__jcontent_between anime">
+                      .regButton:hover {
+                          background: #ccc;
+                      }
 
-            <svg id="SVGDoc" width="18" height="17" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink"
-              xmlns:avocode="https://avocode.com/" viewBox="0 0 18 17">
-              <defs>
-                <path d="M143.29906,59.18169c0,-1.13485 -1.71053,-1.7647 -2.57478,-2.107c-0.52214,-0.21579 -1.06244,-0.4321 -1.58451,-0.66604c-0.70224,-0.32415 -1.4225,-0.70212 -1.94457,-1.2963c-0.1801,-0.21589 -0.28811,-0.36045 -0.28811,-0.64852c0,-0.41406 0.108,-0.82811 0.19813,-1.22413c0.14405,-0.61222 0.45004,-1.1167 0.70217,-1.69284c0.28803,-0.71975 0.39611,-1.47611 0.54016,-2.21432c0.05407,-0.32426 0.14405,-0.63037 0.14405,-0.95463c0,-2.23247 -1.1703,-4.1948 -3.6011,-4.1948c-2.4308,0 -3.6011,1.96234 -3.6011,4.1948c0,0.32426 0.10808,0.63037 0.16201,0.95463c0.16208,0.73821 0.2522,1.49457 0.55826,2.21432c0.25206,0.57613 0.57614,1.08062 0.70224,1.69284c0.10793,0.39601 0.19798,0.81007 0.19798,1.22413c0,0.28807 -0.108,0.43262 -0.28803,0.64852c-0.52228,0.59418 -1.24247,0.97215 -1.94464,1.2963c-0.52221,0.25198 -1.06223,0.45025 -1.58443,0.66604c-0.86424,0.36035 -2.5928,0.97215 -2.5928,2.107v1.80026h16.79907v-1.04443v-0.75583z"
-                  id="Path-0" />
-              </defs>
-              <desc>Generated with Avocode.</desc>
-              <g transform="matrix(1,0,0,1,-126,-44)">
-                <g>
-                  <title>Icon</title>
-                  <use xlink:href="#Path-0" />
-                </g>
-              </g>
-            </svg>
-            SIGN IN
+                      #window {
+                          width: 350px;
+                          height: 420px;
+                          margin: 40px auto;
+                          background: #fff;
+                          border: 1px solid #fff;
+                          border-radius: 15px;
+                          z-index: 150;
+                          display: none;
+                          position: fixed;
+                          left: 0;
+                          right: 0;
+                          top: 0;
+                          bottom: 0;
+                      }
+
+                      .form {
+                          width: 275px;
+                          margin: -15px auto 20px auto;
+                          text-align: center;
+                      }
+
+                      .input {
+                          width: 260px;
+                          padding: 5px;
+                          margin-bottom: 10px;
+                      }
+
+                      .radio {
+                          margin-bottom: 10px;
+                      }
+
+                      .close {
+                          margin: 10px 0 0 320px;
+                          cursor: pointer;
+                          border: 1px solid #ccc;
+                          padding: 2px;
+                          background: #ccc;
+                      }
+
+                      .close:hover {
+                          background: #fff;
+                      }
+
+                      #gray {
+                          opacity: 0.8;
+                          padding: 15px;
+                          background-color: rgba(1, 1, 1, 0.75);
+                          position: fixed;
+                          left: 0;
+                          right: 0;
+                          top: 0;
+                          bottom: 0;
+                          display: none;
+                          z-index: 100;
+                          overflow: auto;
+                      }
+
+
+                  </style>
+
+
+                  <body>
+                  <center><button onclick="show('block')" class="regButton">Реєстрація</button>
+                  </center>
+                  <!-- Задний прозрачный фон -->
+                  <div onclick="show('none')" id="gray"></div>
+                  <div id="window">
+                      <!-- Картинка крестика -->
+                      <img class="close" src="i/close.png" alt="" onclick="show('none')">
+                      <div class="form">
+                          <h2>Реєстрація</h2>
+                          <form action="register.php" method="post">
+                              <p><?php echo $_SESSION['regerror']; ?></p>
+                              <input type="text" placeholder="Логін" name="login" class="input" required>
+                              <input type="email" placeholder="E-mail (необов'язково)" name="email" class="input">
+                              <input type="password" placeholder="Пароль" name="password" class="input" required>
+                              <input type="password" placeholder=" Підтвердіть пароль" name="cpassword" class="input" required>
+                              <input type='tel' placeholder="Телефон" name="phone" class="input" required>
+                              <input type="submit" class="regButton" value="Реєстрація">
+                          </form>
+                      </div>
+                  </div>
+                  <script>
+                      //Функция показа
+                      function show(state) {
+                          document.getElementById('window').style.display = state;
+                          document.getElementById('gray').style.display = state;
+                      }
+                  </script>
+
+
+                  <div id="location">
+                      Мова: <a href="#"><img class="language" src="img/ukraine.png" alt="uk"></a>
+                      <a href="#"><img class="language" src="img/russia.png" alt="ru"></a>
+                  </div>
+
+              </div>
+
+              <div id="logo">
+                  <a href="#"></a>
+                  <img src="img/logo.png" alt="logo">
+              </div>
+
+              <div class="main_flex__nowrap flex__align-items_center">
+
+                  <div id="currency">
+                      Currency: <span>US DOLLAR</span>
+                  </div>
+
+                  <div id="cart" class="btn anime btn main_flex__nowrap flex__align-items_center flex__jcontent_between">
+                      <img src="img/shopping-cart.png" alt="cart">
+                      CART
+                  </div>
+
+              </div>
+
           </div>
-          <div id="location">
-            Location: <span>UKRAINE</span>
-          </div>
-
-        </div>
-
-        <div id="logo">
-          <a href="#"></a>
-          <img src="img/logo.png" alt="logo">
-        </div>
-
-        <div class="main_flex__nowrap flex__align-items_center">
-
-          <div id="currency">
-            Currency: <span>US DOLLAR</span>
-          </div>
-
-          <div id="cart" class="btn anime btn main_flex__nowrap flex__align-items_center flex__jcontent_between">
-            <img src="img/shopping-cart.png" alt="cart">
-            CART
-          </div>
-
-        </div>
-
       </div>
-    </div>
 
     <div id="menu">
       <div class="wrap main_flex__nowrap flex__jcontent_center flex__align-items_center">
@@ -184,13 +271,13 @@ if(isset($_POST['less']))
   <main class="wrap main_flex__nowrap flex__jcontent_between flex__align-items_start">
 
 
-    <div id="right_bar">
+      <div id="right_bar">
 
       <div class="list_product main_flex flex__jcontent_start flex__align-items_start">
         <?php $i=2; while($row = mysqli_fetch_array($resultProduct)) : ?>
         <?php if($i<$loadmore) : ?>
-        <a class="product box main_flex__nowrap flex__jcontent_center flex__align-items_center">
-          <div class="front">
+                <a class="product box main_flex__nowrap flex__jcontent_center flex__align-items_center">
+                <div class="front">
             <?php
                if($row['TopPrice'] == '1')
               {
@@ -277,5 +364,7 @@ if(isset($_POST['less']))
   </footer>
  
 </body>
-
+<script src="js/jquery-1.8.3.js"></script>
+<script src="js/jquery-ui-1.9.2.custom.min.js"></script>
+<script src="js/control.js"></script>
 </html>
