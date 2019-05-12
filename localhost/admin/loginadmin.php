@@ -48,6 +48,7 @@ function e($val){
 ?>
 <!DOCTYPE html>
 <html>
+<link rel='stylesheet' href='css/loginadmin.css' />
 <head>
     <title>Login Page</title>
 </head>
@@ -56,11 +57,11 @@ function e($val){
 session_start();
 print_r($_SESSION['AdminError']);
 ?>
-<form action="loginadmin.php" method="post">
-    <label>Login</label>
-    <input name="login" type="text" class="setlogin" placeholder="Please">
-    <label>Password</label>
-    <input name="password" type="text" class="setpass" placeholder="Please">
+<form id="slick-login" action="loginadmin.php" method="post">
+    <label for="username">Login</label>
+    <input name="login" type="text" class="setlogin" placeholder="Login">
+    <label for="password">Password</label>
+    <input name="password" type="text" class="setpass" placeholder="Password">
     <input name="log" type="submit" value="Log in">
 </form>
 </body>

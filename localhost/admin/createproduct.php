@@ -25,9 +25,7 @@ if($_SESSION['SuccessAdmin'] != "True")
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="css/util.css">
-    <link rel="stylesheet" type="text/css" href="css/main.css">
-
+    <link rel="stylesheet" type="text/css" href="css/createproduct.css">
     <!--===============================================================================================-->
 </head>
 <body>
@@ -48,7 +46,7 @@ if($_SESSION['SuccessAdmin'] != "True")
                             <p>Article Photo: <input type="file" name="aphoto"></p>
                             <p>Description: <textarea name="description"></textarea></p>
                             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Dropdown button
+                                Category
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                 <a class="dropdown-item" ><input type="radio" name="dropinv" value="Шкільне приладдя">Шкільне приладдя</a>
@@ -59,7 +57,7 @@ if($_SESSION['SuccessAdmin'] != "True")
                                 <a class="dropdown-item" ><input type="radio" name="dropinv" value="Декор">Декор</a>
                                 <a class="dropdown-item" ><input type="radio" name="dropinv" value="Різне">Різне</a>
                             </div>
-                            <input type="submit" value="Ok">
+                            <br><input class="submit btn btn-outline-dark" type="submit" value="Ok">
                         </form>
                     </div>
                 </div>

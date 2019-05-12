@@ -29,79 +29,33 @@ $resultMeneg = mysqli_query($db,"SELECT * FROM managers");
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="css/util.css">
-    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/userslist.css">
     <!--===============================================================================================-->
 </head>
 <body>
 
-<div class="limiter">
-    <div class="container-table100">
-        <div class="wrap-table100">
-            <div class="table100 ver1">
-                <div class="table100-firstcol">
-                    <table>
-                        <thead>
-                        <tr class="row100 head">
-                            <th class="cell100 column1">Login</th>
-                            <th class="cell100 column1">User Type</th>
-                            <th class="cell100 column1">Give Manager</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <?php while($row = mysqli_fetch_array($resultUser)) : ?>
-                            <form action="givemanage.php" method="post">
-                                <tr class="row100 body">
-                                    <td class="cell100 column1"> <input type="hidden" name="login" value="<?php echo $row['Login']?>"><?php echo $row['Login']?></td>
-                                    <th class="cell100 column1"><?php echo $row['Usertype']?></th>
-                                    <th class="cell100 column1">
-
-                                        <input class="button" type="submit" value="Give">
-
-                                    </th>
-                                </tr>
-                            </form>
-                        <?php endwhile;?>
-                        </tbody>
-                    </table>
-
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container-table200">
-        <div class="wrap-table100">
-            <div class="table100 ver1">
-                <div class="table100-firstcol">
-                    <table>
-                        <thead>
-                        <tr class="row100 head">
-                            <th class="cell100 column1">Login</th>
-                            <th class="cell100 column1">User Type</th>
-                            <th class="cell100 column1">Deprive Manager</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <?php while($row = mysqli_fetch_array($resultMeneg)) : ?>
-                            <form action="deprivemanag.php" method="post">
-                                <tr class="row100 body">
-                                    <td class="cell100 column1"> <input type="hidden" name="login" value="<?php echo $row['Login']?>"><?php echo $row['Login']?></td>
-                                    <th class="cell100 column1"><?php echo $row['Usertype']?></th>
-                                    <th class="cell100 column1">
-
-                                        <input class="button" type="submit" value="Give">
-
-                                    </th>
-                                </tr>
-                            </form>
-                        <?php endwhile;?>
-                        </tbody>
-                    </table>
-
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="container">
+  <h2>Список користувачів:</h2>
+  <ul class="responsive-table">
+    <li class="table-header">
+      <div class="col col-1">Job Id</div>
+      <div class="col col-2">Customer Name</div>
+      <div class="col col-3">Amount Due</div>
+      <div class="col col-4">Payment Status</div>
+    </li>
+    <?php while($row = mysqli_fetch_array($resultUser)) : ?>
+    <form action="givemanage.php" method="post">
+    <li class="table-row">
+      <div class="col col-1"> <input type="hidden" name="login" value="<?php echo $row['Login']?>"><?php echo $row['Login']?> </div>
+      <div class="col col-2"> <?php echo $row['Usertype']?> </div>
+      <div class="col col-3" data-label="Amount">$350</div>
+      <div class="col col-4" data-label="Payment Status">Pending</div>
+      <input class="btn btn-primary" type="submit" value="Give">
+      
+    </li>
+    </form>
+    <?php endwhile;?>
+  </ul>
 </div>
 
 
