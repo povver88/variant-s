@@ -8,7 +8,7 @@ $pass = "";
 $cpass = "";
 $opt = FALSE;
 $type = "";
-$error = "";
+$error = null;
 if(isset($_POST))
 {
     $login = e($_POST['login']);
@@ -19,6 +19,7 @@ if(isset($_POST))
     $opt = e($_POST['opt'])?1:0;
     $type = "User";
     $sell = 0.0;
+    $_SESSION['out']=$cpass;
         if ($pass != $cpass) {
             $error .= "<li>Паролі не співпадають!</li>";
         }
@@ -55,10 +56,10 @@ if(isset($_POST))
                 }
             }
         }
-        if(empty($error))
+        if($error == null)
         {
-            $query = "INSERT INTO user (login, phone, email, pass, opt, sell) 
-					  VALUES('$login', '$phone', '$email', '$pass', '$opt', '$sell')";
+            $query = "INSERT INTO user (login, phone, email, pass, opt, sell1, sell2, sell3, sell4, sell5, sell6, sell7) 
+					  VALUES('$login', '$phone', '$email', '$pass', '$opt', '$sell', '$sell', '$sell', '$sell', '$sell', '$sell', '$sell')";
             mysqli_query($db, $query);
             $_SESSION['regerror']='';
             header("location: index.php");

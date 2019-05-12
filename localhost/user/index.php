@@ -200,6 +200,7 @@ if(isset($_POST['less']))
                               <input type="password" placeholder="Пароль" name="password" class="input" required>
                               <input type="password" placeholder=" Підтвердіть пароль" name="cpassword" class="input" required>
                               <input type='tel' placeholder="Телефон" name="phone" class="input" required>
+                              <input type='checkbox' name="opt" required>
                               <input type="submit" class="regButton" value="Реєстрація">
                           </form>
                       </div>
