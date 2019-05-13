@@ -6,6 +6,9 @@ a {
     text-decoration: none !important;
 }
 
+.checkbox2 {
+    color: black;
+}
 body {
     background-color: #FFB2B2;
     font-family: 'Montserrat', sans-serif;
