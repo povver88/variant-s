@@ -3,6 +3,10 @@ session_start();
 $db = mysqli_connect('localhost', 'root', '', 'users');
 $resultProduct = mysqli_query($db,"SELECT * FROM products ORDER BY availability DESC , topsell DESC, topprice DESC,
 count DESC");
+if(isset($_SESSION['sort']))
+{
+    $resultProduct = mysqli_query($db,$_SESSION['sort']);
+}
 $resultDownProduct = mysqli_query($db,"SELECT * FROM products WHERE count='0'");
 $resultUpProduct = mysqli_query($db,"SELECT * FROM products WHERE count>'0'");
 while($row = mysqli_fetch_array($resultDownProduct))
@@ -26,7 +30,65 @@ if(isset($_POST['less']))
 {
     $loadmore = $_POST['less'];
 }
-
+if(isset($_GET['category']))
+{
+    if($_GET['category']=='other')
+    {
+        $_SESSION['sort']="SELECT * FROM products WHERE category='Різне' ORDER BY availability DESC , topsell DESC, topprice DESC,
+count DESC";
+        $resultProduct = mysqli_query($db,"SELECT * FROM products WHERE category='Різне' ORDER BY availability DESC , topsell DESC, topprice DESC,
+count DESC");
+    }
+    if($_GET['category']=='school')
+    {
+        $_SESSION['sort']="SELECT * FROM products WHERE category='Шкільне приладдя' ORDER BY availability DESC , topsell DESC, topprice DESC,
+count DESC";
+        $resultProduct = mysqli_query($db,"SELECT * FROM products WHERE category='Шкільне приладдя' ORDER BY availability DESC , topsell DESC, topprice DESC,
+count DESC");
+    }
+    if($_GET['category']=='office')
+    {
+        $_SESSION['sort']="SELECT * FROM products WHERE category='Офісне приладдя' ORDER BY availability DESC , topsell DESC, topprice DESC,
+count DESC";
+        $resultProduct = mysqli_query($db,"SELECT * FROM products WHERE category='Офісне приладдя' ORDER BY availability DESC , topsell DESC, topprice DESC,
+count DESC");
+    }
+    if($_GET['category']=='child')
+    {
+        $_SESSION['sort']="SELECT * FROM products WHERE category='Дитячі товари' ORDER BY availability DESC , topsell DESC, topprice DESC,
+count DESC";
+        $resultProduct = mysqli_query($db,"SELECT * FROM products WHERE category='Дитячі товари' ORDER BY availability DESC , topsell DESC, topprice DESC,
+count DESC");
+    }
+    if($_GET['category']=='paper')
+    {
+        $_SESSION['sort']="SELECT * FROM products WHERE category='Зошити та блокноти' ORDER BY availability DESC , topsell DESC, topprice DESC,
+count DESC";
+        $resultProduct = mysqli_query($db,"SELECT * FROM products WHERE category='Зошити та блокноти' ORDER BY availability DESC , topsell DESC, topprice DESC,
+count DESC");
+    }
+    if($_GET['category']=='book')
+    {
+        $_SESSION['sort']="SELECT * FROM products WHERE category='Книжки та розмальовки' ORDER BY availability DESC , topsell DESC, topprice DESC,
+count DESC";
+        $resultProduct = mysqli_query($db,"SELECT * FROM products WHERE category='Книжки та розмальовки' ORDER BY availability DESC , topsell DESC, topprice DESC,
+count DESC");
+    }
+    if($_GET['category']=='decor')
+    {
+        $_SESSION['sort']="SELECT * FROM products WHERE category='Декор' ORDER BY availability DESC , topsell DESC, topprice DESC,
+count DESC";
+        $resultProduct = mysqli_query($db,"SELECT * FROM products WHERE category='Декор' ORDER BY availability DESC , topsell DESC, topprice DESC,
+count DESC");
+    }
+    if($_GET['category']=='all')
+    {
+        $_SESSION['sort']="SELECT * FROM products ORDER BY availability DESC , topsell DESC, topprice DESC,
+count DESC";
+        $resultProduct = mysqli_query($db,"SELECT * FROM products ORDER BY availability DESC , topsell DESC, topprice DESC,
+count DESC");
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -242,14 +304,14 @@ if(isset($_POST['less']))
       <div id="menu">
           <div class="wrap main_flex__nowrap flex__jcontent_center flex__align-items_center">
               <nav id="main_nav">
-                  <li><a href="#"></a></li>
-                  <li><a href="#">Шкільне приладдя</a></li>
-                  <li><a href="#">Офісне приладдя</a></li>
-                  <li><a href="#">Дитячі товари</a></li>
-                  <li><a href="#">Зошити та блокноти</a></li>
-                  <li><a href="#">Книжки та розмальовки</a></li>
-                  <li><a href="#">Декор</a></li>
-                  <li><a href="#">Різне</a></li>
+                  <li><a href="index.php?category=all">Усе</a></li>
+                  <li><a href="index.php?category=school">Шкільне приладдя</a></li>
+                  <li><a href="index.php?category=office">Офісне приладдя</a></li>
+                  <li><a href="index.php?category=child">Дитячі товари</a></li>
+                  <li><a href="index.php?category=paper">Зошити та блокноти</a></li>
+                  <li><a href="index.php?category=book">Книжки та розмальовки</a></li>
+                  <li><a href="index.php?category=decor">Декор</a></li>
+                  <li><a href="index.php?category=other">Різне</a></li>
               </nav>
           </div>
       </div>
