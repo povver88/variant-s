@@ -6,14 +6,14 @@ if($_SESSION['SuccessAdmin'] != "True")
     header('location: loginadmin.php');
 }
 $db = mysqli_connect('localhost', 'root', '', 'users');
-$resultUser = mysqli_query($db,"SELECT * FROM user");
-$resultMeneg = mysqli_query($db,"SELECT * FROM managers");
+$resultUser = mysqli_query($db,"SELECT * FROM user WHERE usertype='User'");
+$resultMeneg = mysqli_query($db,"SELECT * FROM user WHERE usertype='Manager'");
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Table V05</title>
+    <title>Список користувачів</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--===============================================================================================-->
@@ -38,24 +38,41 @@ $resultMeneg = mysqli_query($db,"SELECT * FROM managers");
   <h2>Список користувачів:</h2>
   <ul class="responsive-table">
     <li class="table-header">
-      <div class="col col-1">Job Id</div>
-      <div class="col col-2">Customer Name</div>
-      <div class="col col-3">Amount Due</div>
-      <div class="col col-4">Payment Status</div>
+      <div class="col col-1">Логін</div>
+      <div class="col col-2">Тип</div>
+        <div class="col col-3"></div>
     </li>
     <?php while($row = mysqli_fetch_array($resultUser)) : ?>
     <form action="givemanage.php" method="post">
     <li class="table-row">
       <div class="col col-1"> <input type="hidden" name="login" value="<?php echo $row['Login']?>"><?php echo $row['Login']?> </div>
       <div class="col col-2"> <?php echo $row['Usertype']?> </div>
-      <div class="col col-3" data-label="Amount">$350</div>
-      <div class="col col-4" data-label="Payment Status">Pending</div>
-      <input class="btn btn-primary" type="submit" value="Give">
+      <input class="btn btn-primary" type="submit" value="Менеджер">
       
     </li>
     </form>
     <?php endwhile;?>
   </ul>
+</div>
+<div class="container">
+    <h2>Список Менеджерів:</h2>
+    <ul class="responsive-table">
+        <li class="table-header">
+            <div class="col col-1">Логін</div>
+            <div class="col col-2">Тип</div>
+            <div class="col col-2"></div>
+        </li>
+        <?php while($row = mysqli_fetch_array($resultMeneg)) : ?>
+            <form action="deprivemanag.php" method="post">
+                <li class="table-row">
+                    <div class="col col-1"> <input type="hidden" name="login" value="<?php echo $row['Login']?>"><?php echo $row['Login']?> </div>
+                    <div class="col col-2"> <?php echo $row['Usertype']?> </div>
+                    <input class="btn btn-primary" type="submit" value="Користувач">
+
+                </li>
+            </form>
+        <?php endwhile;?>
+    </ul>
 </div>
 
 

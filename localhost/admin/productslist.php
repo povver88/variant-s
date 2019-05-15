@@ -11,7 +11,7 @@ $resultProduct = mysqli_query($db,"SELECT * FROM products");
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Table V05</title>
+    <title>Продукти</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--===============================================================================================-->
@@ -27,60 +27,39 @@ $resultProduct = mysqli_query($db,"SELECT * FROM products");
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="css/util.css">
-    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/userslist.css">
     <!--===============================================================================================-->
 </head>
 <body>
+<div class="container">
+    <h2>Список користувачів:</h2>
+    <ul class="responsive-table">
+        <li class="table-header">
+            <div class="col col-1">Назва</div>
+            <div class="col col-2">Артикул</div>
+            <div class="col col-3">Виробник</div>
+            <div class="col col-4">Ціна</div>
+            <div class="col col-5">Фото</div>
+            <div class="col col-6"></div>
+            <div class="col col-7"></div>
+        </li>
+        <?php while($row = mysqli_fetch_array($resultProduct)) : ?>
+                <li class="table-row">
+                    <div class="col col-1"> <?php echo $row['Name']?> </div>
+                    <div class="col col-2"> <?php echo $row['Article']?> </div>
+                    <div class="col col-3"> <?php echo $row['Brend']?> </div>
+                    <div class="col col-4"> <?php echo $row['Price']?> </div>
+                    <div class="col col-5"> <?php echo "<img src='../photos/product/{$row['Photo']}.jpg' heigth=200 width=150 alt=''/>" ?> </div>
+                    <div class="col col-6"> <a href="producteditform.php?name=<?php echo $row['Name'] ?>"><input type="button" value="Edit"></a></div>
+                    <div class="col col-7"><form action="productCRUD/productdelete.php" method="post">
+                        <input type="hidden" name="productName" value="<?php echo $row['Name']?>">
+                        <input type="submit" value="Delete">
+                        </form></div>
+                </li>
 
-<div class="limiter">
-    <div class="container-table100">
-        <div class="wrap-table100">
-            <div class="table100 ver1">
-                <div class="table100-firstcol">
-                    <table>
-                        <thead>
-                        <tr class="row100 head">
-                            <th class="cell100 column1">Name</th>
-                            <th class="cell100 column1">Article</th>
-                            <th class="cell100 column1">Brend</th>
-                            <th class="cell100 column1">Price</th>
-                            <th class="cell100 column1">Photo</th>
-                            <th class="cell100 column1">Edit</th>
-                            <th class="cell100 column1">Delete</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <?php while($row = mysqli_fetch_array($resultProduct)) : ?>
-                                <tr class="row100 body">
-                                    <td class="cell100 column1"><?php echo $row['Name']?></td>
-                                    <th class="cell100 column1"><?php echo $row['Article']?></th>
-                                    <th class="cell100 column1"><?php echo $row['Brend']?></th>
-                                    <th class="cell100 column1"><?php echo $row['Price']?></th>
-                                    <th class="cell100 column1"><?php echo "<img src='../photos/product/{$row['Photo']}.jpg' heigth=200 width=150 alt=''/>" ?></th>
-                                    <th class="cell100 column1">
-                                        <form action="producteditform.php" method="get">
-                                        <a href="producteditform.php?name=<?php echo $row['Name'] ?>"><input type="button" value="Edit"></a>
-                                        </form>
-                                    </th>
-                                    <th class="cell100 column1">
-                                        <form action="productCRUD/productdelete.php" method="post">
-                                            <input type="hidden" name="productName" value="<?php echo $row['Name']?>">
-                                            <input type="submit" value="Delete">
-                                        </form>
-                                    </th>
-                                </tr>
-                        <?php endwhile;?>
-                        </tbody>
-                    </table>
-
-                </div>
-            </div>
-        </div>
-    </div>
+        <?php endwhile;?>
+    </ul>
 </div>
-
-
 <!--===============================================================================================-->
 <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->

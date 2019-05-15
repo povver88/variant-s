@@ -11,3 +11,8 @@ margin-top: 2%;
 	width: 171px;
 	margin-top: 5px;
 }
+
+.descript {
+	height: 250px !important;
+	width: 500px !important;
+}

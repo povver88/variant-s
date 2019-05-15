@@ -20,6 +20,9 @@ body {
   position: relative;
 }
 
+.losh {
+  color: black;
+}
 .dark {
   background-color: #7F5959;
   color: #fff;

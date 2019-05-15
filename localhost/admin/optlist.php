@@ -12,7 +12,7 @@ $resultUser = mysqli_query($db,"SELECT * FROM user WHERE opt='1' ");
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Table V05</title>
+    <title>Список оптовиків</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--===============================================================================================-->
@@ -28,51 +28,31 @@ $resultUser = mysqli_query($db,"SELECT * FROM user WHERE opt='1' ");
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="css/util.css">
-    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/userslist.css">
     <!--===============================================================================================-->
 </head>
 <body>
+<div class="container">
+    <h2>Список користувачів:</h2>
+    <ul class="responsive-table">
+        <li class="table-header">
+            <div class="col col-1">Логін</div>
+            <div class="col col-2">Тип</div>
+            <div class="col col-5"></div>
+        </li>
+        <?php while($row = mysqli_fetch_array($resultUser)) : ?>
+            <form action="giveopt.php" method="post">
+                <li class="table-row">
+                    <div class="col col-1"> <input type="hidden" name="login" value="<?php echo $row['Login']?>"><?php echo $row['Login']?> </div>
+                    <div class="col col-2"> <?php echo $row['Opt']?> </div>
+                    <input class="btn btn-primary" name="access" type="submit" value="Дозволити">
+                        <input class="btn btn-primary" name="access" type="submit" value="Відхилити">
+                </li>
+            </form>
 
-<div class="limiter">
-    <div class="container-table100">
-        <div class="wrap-table100">
-            <div class="table100 ver1">
-                <div class="table100-firstcol">
-                    <table>
-                        <thead>
-                        <tr class="row100 head">
-                            <th class="cell100 column1">Login</th>
-                            <th class="cell100 column1">User Type</th>
-                            <th class="cell100 column1">Give Manager</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <?php while($row = mysqli_fetch_array($resultUser)) : ?>
-                            <tr class="row100 body">
-                                <form action="giveopt.php" method="post">
-                                    <td class="cell100 column1"> <input type="hidden" name="login" value="<?php echo $row['Login']?>"><?php echo $row['Login']?></td>
-                                    <th class="cell100 column1"><?php echo $row['Opt']?></th>
-                                    <th class="cell100 column1">
-                                        <input class="button" type="submit" value="Give">
-                                    </th>
-                                </form>
-                                <form action="depriveopt.php" method="post">
-                                    <th class="cell100 column1">
-                                        <input type="hidden" name="login" value="<?php echo $row['Login']?>">
-                                        <input class="button" type="submit" value="Deprive">
-                                    </th>
-                                </form>
-                            </tr>
-                        <?php endwhile;?>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
+        <?php endwhile;?>
+    </ul>
 </div>
-
 
 <!--===============================================================================================-->
 <script src="vendor/jquery/jquery-3.2.1.min.js"></script>

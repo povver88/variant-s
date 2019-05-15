@@ -260,10 +260,7 @@ count DESC");
                               <input type="password" placeholder="Пароль" name="password" class="input" required>
                               <input type="password" placeholder=" Підтвердіть пароль" name="cpassword" class="input" required>
                               <input type='tel' placeholder="Телефон" name="phone" class="input" required>
-                              <div class="custom-control custom-checkbox">
-                                  <input type="checkbox" class="custom-control-input" id="defaultChecked2" unchecked>
-                                  <label class="checkbox2 custom-control-label" for="defaultChecked2">Default checked</label>
-                              </div>
+                              <input type="checkbox"> <span class="losh">  я лошпєд </span><br>
                               <input type="submit" class="regButton" value="Реєстрація">
                           </form>
                       </div>
@@ -359,6 +356,10 @@ count DESC");
       <form action="addcart.php" method="post">
           <input type="hidden" name="id" value="<?php echo $row['Id']?>"><button type="submit" class="btn btn-outline-success btn-lg">Додати до корзини</button>
       </form>
+
+        <form action="####">
+            <button class="btn btn-outline-success btn-lg">Більше</button>
+        </form>
     </div>
     </a>
           <?php endif; $i++; ?>

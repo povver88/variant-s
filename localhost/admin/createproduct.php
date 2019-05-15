@@ -9,7 +9,7 @@ if($_SESSION['SuccessAdmin'] != "True")
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Table V05</title>
+    <title>Створити продукт</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--===============================================================================================-->
@@ -37,16 +37,16 @@ if($_SESSION['SuccessAdmin'] != "True")
                 <div class="table100-firstcol">
                     <div class="dropdown">
                         <form action="product.php" method="post" enctype="multipart/form-data">
-                            <p>Name: <input type="text" name="name"></p>
-                            <p>Article: <input type="text" name="article"></p>
-                            <p>Brend: <input type="text" name="brend"></p>
-                            <p>Price: <input type="text" name="price"></p>
-                            <p>Count: <input type="text" name="count"></p>
-                            <p>Photo: <input type="file" name="photo"></p>
-                            <p>Article Photo: <input type="file" name="aphoto"></p>
-                            <p>Description: <textarea name="description"></textarea></p>
+                            <p>Назва: <input type="text" name="name"></p>
+                            <p>Артикуд: <input type="text" name="article"></p>
+                            <p>Бренд: <input type="text" name="brend"></p>
+                            <p>Ціна: <input type="text" name="price"></p>
+                            <p>Кількість: <input type="text" name="count"></p>
+                            <p>Фото: <input type="file" name="photo"></p>
+                            <p>Штрих-код: <input type="file" name="aphoto"></p>
+                            <p>Опис: <textarea class="descript" name="description"></textarea></p>
                             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Category
+                                Категорії
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                 <a class="dropdown-item" ><input type="radio" name="dropinv" value="Шкільне приладдя">Шкільне приладдя</a>
