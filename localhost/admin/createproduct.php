@@ -38,7 +38,7 @@ if($_SESSION['SuccessAdmin'] != "True")
                     <div class="dropdown">
                         <form action="product.php" method="post" enctype="multipart/form-data">
                             <p>Назва: <input type="text" name="name"></p>
-                            <p>Артикуд: <input type="text" name="article"></p>
+                            <p>Артикул: <input type="text" name="article"></p>
                             <p>Бренд: <input type="text" name="brend"></p>
                             <p>Ціна: <input type="text" name="price"></p>
                             <p>Кількість: <input type="text" name="count"></p>

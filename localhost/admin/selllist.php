@@ -11,7 +11,7 @@ $resultOpt = mysqli_query($db,"SELECT * FROM user WHERE opt='2'");
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Table V05</title>
+    <title>Знижки</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--===============================================================================================-->
@@ -27,58 +27,42 @@ $resultOpt = mysqli_query($db,"SELECT * FROM user WHERE opt='2'");
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="css/util.css">
-    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/userslist.css">
     <!--===============================================================================================-->
 </head>
 <body>
-
-<div class="limiter">
-    <div class="container-table200">
-        <div class="wrap-table100">
-            <div class="table100 ver1">
-                <div class="table100-firstcol">
-                    <table>
-                        <thead>
-                        <tr class="row100 head">
-                            <th class="cell100 column1">Login</th>
-                            <th class="cell100 column1">Cof</th>
-                            <th class="cell100 column1">Set cof</th>
-                        </tr>
-                        </thead>
-                        <tbody>
+<div class="container">
+    <h2>Список Користувачів:</h2>
+    <ul class="responsive-table">
+        <li class="table-header">
+            <div class="col col-1">Логін</div>
+            <div class="col col-2">Шкільне приладдя</div>
+            <div class="col col-3">Офісне приладдя</div>
+            <div class="col col-4">Дитячі товари</div>
+            <div class="col col-5">Зошити та блокноти</div>
+            <div class="col col-6">Книжки та розмальвки</div>
+            <div class="col col-7">Декор</div>
+            <div class="col col-8">Різне</div>
+            <div class="col col-9"></div>
                         <?php while($row = mysqli_fetch_array($resultOpt)) : ?>
-                            <form action="sellcof.php" method="post">
-                                <tr class="row100 body">
-                                    <td class="cell100 column1"> <input type="hidden" name="login" value="<?php echo $row['Login']?>"><?php echo $row['Login']?></td>
-                                    <th class="cell100 column1">
-                                        <input type="text" name="sell" placeholder="Enter..">
-                                    </th>
-                                    <th class="cell100 column1">
-                                        <input class="button" type="submit" value="Set">
-                                    </th>
-                                </tr>
-                            </form>
+        <li class="table-row">
+            <form action="sellcof.php" method="post">
+            <div class="col col-1"> <input type="hidden" name="login" value="<?php echo $row['Login']?>"><?php echo $row['Login']?></div>
+            <div class="col col-2"><input type="text" name="sell1" placeholder="Відсоток" value="<?php echo $row['Sell1']?>"></div>
+            <div class="col col-3"><input type="text" name="sell2" placeholder="Відсоток" value="<?php echo $row['Sell2']?>"></div>
+            <div class="col col-4"><input type="text" name="sell3" placeholder="Відсоток" value="<?php echo $row['Sell3']?>"></div>
+            <div class="col col-5"><input type="text" name="sell4" placeholder="Відсоток" value="<?php echo $row['Sell4']?>"></div>
+            <div class="col col-6"><input type="text" name="sell5" placeholder="Відсоток" value="<?php echo $row['Sell5']?>"></div>
+            <div class="col col-7"><input type="text" name="sell6" placeholder="Відсоток" value="<?php echo $row['Sell6']?>"></div>
+            <div class="col col-8"><input type="text" name="sell7" placeholder="Відсоток" value="<?php echo $row['Sell7']?>"></div>
+            <div class="col col-9"><input class="button" type="submit" value="Підтвердити"></div>
+            </form>
+        </li>
                         <?php endwhile;?>
-                        </tbody>
-                    </table>
-
+        </li>
+    </ul>
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
 
-
-<!--===============================================================================================-->
-<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-<!--===============================================================================================-->
-<script src="vendor/bootstrap/js/popper.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-<!--===============================================================================================-->
-<script src="vendor/select2/select2.min.js"></script>
-<!--===============================================================================================-->
-<script src="vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 <script>
     $('.js-pscroll').each(function(){
         var ps = new PerfectScrollbar(this);

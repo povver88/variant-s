@@ -32,7 +32,7 @@ $resultProduct = mysqli_query($db,"SELECT * FROM products");
 </head>
 <body>
 <div class="container">
-    <h2>Список користувачів:</h2>
+    <h2>Список Продуктів:</h2>
     <ul class="responsive-table">
         <li class="table-header">
             <div class="col col-1">Назва</div>

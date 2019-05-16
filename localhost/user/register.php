@@ -21,7 +21,7 @@ if(isset($_POST))
     $sell = 0.0;
     $_SESSION['out']=$cpass;
         if ($pass != $cpass) {
-            $error .= "<li>Паролі не співпадають!</li>";
+            $error .= "<span class='losh'>Паролі не співпадають!</span>";
         }
         else
         {
@@ -32,7 +32,7 @@ if(isset($_POST))
             if (mysqli_num_rows($results) == 1 OR mysqli_num_rows($results1) == 1) {
                 if($email != "")
                 {
-                    $error .= "<li>Цей E-mail зайнятий!</li>";
+                    $error .= "<span class='losh'>Цей E-mail зайнятий!</span>";
                 }
             }
             $query = "SELECT * From user WHERE phone='$phone'";
@@ -42,7 +42,7 @@ if(isset($_POST))
             if (mysqli_num_rows($results) == 1 OR mysqli_num_rows($results1) == 1) {
                 if($phone != "")
                 {
-                    $error .= "<li>Цей телефон зайнятий!</li>";
+                    $error .= "<span class='losh'>Цей телефон зайнятий!</span>";
                 }
             }
             $query = "SELECT * From user WHERE login='$login'";
@@ -52,19 +52,21 @@ if(isset($_POST))
             if (mysqli_num_rows($results) == 1 OR mysqli_num_rows($results1) == 1) {
                 if($login != "")
                 {
-                    $error .= "<li>Цей логін зайнятий!</li>";
+                    $error .= "<span class='losh'>Цей логін зайнятий!</span>";
                 }
             }
         }
         if($error == null)
         {
+            $_SESSION['user']['Login'] = $login;
             $query = "INSERT INTO user (login, phone, email, pass, opt, sell1, sell2, sell3, sell4, sell5, sell6, sell7) 
 					  VALUES('$login', '$phone', '$email', '$pass', '$opt', '$sell', '$sell', '$sell', '$sell', '$sell', '$sell', '$sell')";
             mysqli_query($db, $query);
-            $_SESSION['regerror']='';
+            $_SESSION['regerror']=null;
             header("location: index.php");
         }
         else{
+            $_SESSION['user']['Login'] = null;
             $_SESSION['regerror']=$error;
             header("location: index.php");
         }

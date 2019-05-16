@@ -106,6 +106,7 @@ count DESC");
 </head>
 
 <body>
+<?php if (isset($user)) : ?>
   <div id="cart_box" class="anime main_flex__nowrap flex__jcontent_between flex__align-items_center">
     <div class="title_cart main_flex__nowrap flex__jcontent_between flex__align-items_center">
       <p>Згорнути</p>
@@ -162,7 +163,7 @@ count DESC");
       </form>
 
   </div>
-
+<?php endif; ?>
   <header class="dark">
       <div id="top">
           <div class="wrap main_flex__nowrap flex__align-items_center flex__jcontent_between">
@@ -182,6 +183,21 @@ count DESC");
                       }
 
                       #window {
+                          width: 350px;
+                          height: 420px;
+                          margin: 40px auto;
+                          background: #fff;
+                          border: 1px solid #fff;
+                          border-radius: 15px;
+                          z-index: 150;
+                          display: none;
+                          position: fixed;
+                          left: 0;
+                          right: 0;
+                          top: 0;
+                          bottom: 0;
+                      }
+                      #window2 {
                           width: 350px;
                           height: 420px;
                           margin: 40px auto;
@@ -238,12 +254,26 @@ count DESC");
                           z-index: 100;
                           overflow: auto;
                       }
+                      #gray2 {
+                          opacity: 0.8;
+                          padding: 15px;
+                          background-color: rgba(1, 1, 1, 0.75);
+                          position: fixed;
+                          left: 0;
+                          right: 0;
+                          top: 0;
+                          bottom: 0;
+                          display: none;
+                          z-index: 100;
+                          overflow: auto;
+                      }
 
 
                   </style>
 
 
                   <body>
+                  <?php if(empty($user)) : ?>
                   <center><button onclick="show('block')" class="regButton">Реєстрація</button>
                   </center>
                   <!-- Задний прозрачный фон -->
@@ -252,7 +282,7 @@ count DESC");
                       <!-- Картинка крестика -->
                       <img class="close" src="i/close.png" alt="" onclick="show('none')">
                       <div class="form">
-                          <h2>Реєстрація</h2>
+                          <span class="losh">Реєстрація</span>
                           <form action="register.php" method="post">
                               <p><?php echo $_SESSION['regerror']; ?></p>
                               <input type="text" placeholder="Логін" name="login" class="input" required>
@@ -265,15 +295,40 @@ count DESC");
                           </form>
                       </div>
                   </div>
+                      <center><button onclick="show2('block')" class="regButton">Увійти</button>
+                      </center>
+                      <!-- Задний прозрачный фон -->
+                      <div onclick="show2('none')" id="gray2"></div>
+                      <div id="window2">
+                          <!-- Картинка крестика -->
+                          <img class="close" src="i/close.png" alt="" onclick="show2('none')">
+                          <div class="form">
+                              <span class="losh">Увійти</span>
+                              <form action="login.php" method="post">
+                                  <p><?php echo $_SESSION['regerror']; ?></p>
+                                  <input type="text" placeholder="Логін" name="login" class="input" required>
+                                  <input type="password" placeholder="Пароль" name="password" class="input" required>
+                                  <input type="submit" class="regButton" value="Реєстрація">
+                              </form>
+                          </div>
+                      </div>
+
                   <script>
                       //Функция показа
                       function show(state) {
                           document.getElementById('window').style.display = state;
                           document.getElementById('gray').style.display = state;
                       }
+                      function show2(state) {
+                          document.getElementById('window2').style.display = state;
+                          document.getElementById('gray2').style.display = state;
+                      }
                   </script>
-
-
+                  <?php endif; ?>
+                  <?php if(isset($user)) : ?>
+                  <a href="logout.php" ><button class="regButton">Вийти</button>
+                  </a>
+                  <?php endif; ?>
                   <div id="location">
                       Мова: <a href="#"><img class="language" src="img/ukraine.png" alt="uk"></a>
                       <a href="#"><img class="language" src="img/russia.png" alt="ru"></a>
@@ -285,16 +340,15 @@ count DESC");
                   <a href="#"></a>
                   <img src="img/logo.png" alt="logo">
               </div>
-
+              <div><p><?php if(isset($user)){ echo $user;} ?></p></div>
               <div class="main_flex__nowrap flex__align-items_center">
-
+              <?php if(isset($user)) : ?>
                   <div id="cart" class="btn anime btn main_flex__nowrap flex__align-items_center flex__jcontent_between">
                       <img src="img/shopping-cart.png" alt="cart">
                       Корзина
                   </div>
-
+              <?php endif; ?>
               </div>
-
           </div>
       </div>
 
@@ -353,10 +407,11 @@ count DESC");
     </div>
     <div class="back">
       <p class="price"><?php echo $row['Price']?></p>
+        <?php if(isset($user)) : ?>
       <form action="addcart.php" method="post">
           <input type="hidden" name="id" value="<?php echo $row['Id']?>"><button type="submit" class="btn btn-outline-success btn-lg">Додати до корзини</button>
       </form>
-
+        <?php endif; ?>
         <form action="####">
             <button class="btn btn-outline-success btn-lg">Більше</button>
         </form>

@@ -21,7 +21,7 @@ function e($val){
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Table V05</title>
+    <title>Редагування</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--===============================================================================================-->
     <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
@@ -36,8 +36,7 @@ function e($val){
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="css/util.css">
-    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/createproduct.css">
 <body>
 
 <div class="limiter">
@@ -48,16 +47,16 @@ function e($val){
                     <div class="dropdown">
                         <form action="productCRUD/productedit.php" method="post" enctype="multipart/form-data">
                             <input type="hidden" name="id" value="<?php $_SESSION['editproduct']['Id'] ?>">
-                            <p>Name: <input type="text" name="name" value="<?php $_SESSION['editproduct']['Name'] ?>"></p>
-                            <p>Article: <input type="text" name="article" value="<?php $_SESSION['editproduct']['Article'] ?>"></p>
-                            <p>Brend: <input type="text" name="brend" value="<?php $_SESSION['editproduct']['Brend'] ?>"></p>
-                            <p>Price: <input type="text" name="price" value="<?php $_SESSION['editproduct']['Price'] ?>"></p>
-                            <p>Count: <input type="text" name="count" value="<?php $_SESSION['editproduct']['Count'] ?>"></p>
-                            <p>Photo: <input type="file" name="photo"></p>
-                            <p>Article Photo: <input type="file" name="aphoto"></p>
-                            <p>Description: <textarea name="description"><?php $_SESSION['editproduct']['Description'] ?></textarea></p>
+                            <p>Назва: <input type="text" name="name" value="<?php $_SESSION['editproduct']['Name'] ?>"></p>
+                            <p>Артикул: <input type="text" name="article" value="<?php $_SESSION['editproduct']['Article'] ?>"></p>
+                            <p>Бренд: <input type="text" name="brend" value="<?php $_SESSION['editproduct']['Brend'] ?>"></p>
+                            <p>Ціна: <input type="text" name="price" value="<?php $_SESSION['editproduct']['Price'] ?>"></p>
+                            <p>Кінець: <input type="text" name="count" value="<?php $_SESSION['editproduct']['Count'] ?>"></p>
+                            <p>Фото: <input type="file" name="photo"></p>
+                            <p>Штрих-код: <input type="file" name="aphoto"></p>
+                            <p>Опис: <textarea class="descript" name="description"><?php $_SESSION['editproduct']['Description'] ?></textarea></p>
                             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Dropdown button
+                                Категорії
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                 <a class="dropdown-item" ><input type="radio" name="dropinv" value="Шкільне приладдя">Шкільне приладдя</a>
@@ -68,8 +67,8 @@ function e($val){
                                 <a class="dropdown-item" ><input type="radio" name="dropinv" value="Декор">Декор</a>
                                 <a class="dropdown-item" ><input type="radio" name="dropinv" value="Різне">Різне</a>
                             </div>
-                            <p><input type="checkbox" name="topprice" value="On" <?php if($_SESSION['editproduct']['TopPrice']=='1'){ echo "checked";} ?>>Top Price</p>
-                            <p><input type="checkbox" name="topsell" value="On" <?php if($_SESSION['editproduct']['TopSell']=='1'){ echo "checked";} ?>>Top Sell</p>
+                            <p><input type="checkbox" name="topprice" value="On" <?php if($_SESSION['editproduct']['TopPrice']=='1'){ echo "checked";} ?>>Топ ціна</p>
+                            <p><input type="checkbox" name="topsell" value="On" <?php if($_SESSION['editproduct']['TopSell']=='1'){ echo "checked";} ?>>Топ продаж</p>
                             <input type="submit" value="Ok">
                         </form>
                     </div>
