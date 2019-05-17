@@ -1,8 +1,1 @@
-
-
-  orderslist.php: Список юзерів які хочуть шось купити
-  productslist.php: Список продуктів, всі інпути там же
-
-Bodya: orderslist is na ur sovisti!
-and productdelete.php finish pls 
-
+Pasha: http://variant-s/localhost/admin/admin.html Постав усе в центр
