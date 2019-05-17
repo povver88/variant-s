@@ -1,13 +1,26 @@
 <?php
 session_start();
+if($_SESSION['SuccessAdmin'] != "True")
+{
+    header('location: loginadmin.php');
+}
 $db = mysqli_connect('localhost', 'root', '', 'users');
 $users = $_SESSION['AdminOrderUser'];
+
+foreach ($users as $item)
+{
+$query = mysqli_query($db,"SELECT * FROM user WHERE login='$item'");
+if(mysqli_num_rows($query) == 0)
+{
+    unset($users[$item]);
+}
+}
 
 $resultProduct = mysqli_query($db,"SELECT * FROM products"); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Table V05</title>
+    <title>Покупці</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--===============================================================================================-->
@@ -23,54 +36,30 @@ $resultProduct = mysqli_query($db,"SELECT * FROM products"); ?>
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="css/util.css">
-    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/userslist.css">
     <!--===============================================================================================-->
 </head>
 <body>
-<div class="limiter">
-    <div class="container-table100">
-        <div class="wrap-table100">
-            <div class="table100 ver1">
-                <div class="table100-firstcol">
-                    <table>
-                        <thead>
-                        <tr class="row100 head">
-                            <th class="cell100 column1">Login</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <?php if(isset($users)) : ?>
+<div class="container">
+    <h2>Список Продуктів:</h2>
+    <ul class="responsive-table">
+        <li class="table-header">
+            <div class="col col-1">Логін</div>
+            <div class="col col-2">Більше</div>
+        </li>
+            <?php if(isset($users)) : ?>
                         <?php foreach ($users as $item) : ?>
-                            <tr class="row100 body">
-                                <td class="cell100 column1"><?php echo $item?></td>
-                                <form action="userorder.php" method="post">
-                                    <th class="cell100 column1">
-                                        <input type="hidden" name="login" value="<?php echo $item?>"><input type="submit" value="More">
-                                    </th>
-                                </form>
-                            </tr>
+                    <li class="table-row">
+                        <div class="col col-1"> <?php echo $item?> </div>
+                        <div class="col col-2"><form action="userorder.php" method="post">
+                                    <input type="hidden" name="login" value="<?php echo $item?>"><input type="submit" value="More">
+                            </form></div>
+                    </li>
+
                         <?php endforeach;?>
                         <?php endif; ?>
-                        </tbody>
-                    </table>
-
-                </div>
-            </div>
-        </div>
-    </div>
+    </ul>
 </div>
-
-
-<!--===============================================================================================-->
-<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-<!--===============================================================================================-->
-<script src="vendor/bootstrap/js/popper.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-<!--===============================================================================================-->
-<script src="vendor/select2/select2.min.js"></script>
-<!--===============================================================================================-->
-<script src="vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
 <script>
     $('.js-pscroll').each(function(){
         var ps = new PerfectScrollbar(this);

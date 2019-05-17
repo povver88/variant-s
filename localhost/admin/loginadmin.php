@@ -14,14 +14,6 @@ function login()
     global $db, $login, $pass, $errors;
     $login = e($_POST['login']);
     $pass = e($_POST['password']);
-    if(empty($login))
-    {
-        array_push($errors, "Username is required");
-    }
-    if(empty($pass))
-    {
-        array_push($errors, "Password is required");
-    }
     if(count($errors)==0)
     {
         $query = "SELECT * From admin WHERE login='$login' AND password='$pass'";
@@ -35,7 +27,7 @@ function login()
             header('location: userslist.php');
 
         }else {
-            $_SESSION['AdminError'] = "<li>Неправильный пароль или логин</li>";
+            $_SESSION['AdminError'] = null;
             $_SESSION['SuccessAdmin'] = "False";
             header('location: loginadmin.php');
         }

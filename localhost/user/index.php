@@ -1,6 +1,7 @@
 <?php
 session_start();
 $db = mysqli_connect('localhost', 'root', '', 'users');
+
 $resultProduct = mysqli_query($db,"SELECT * FROM products ORDER BY availability DESC , topsell DESC, topprice DESC,
 count DESC");
 if(isset($_SESSION['sort']))
@@ -38,6 +39,11 @@ if(isset($_GET['category']))
 count DESC";
         $resultProduct = mysqli_query($db,"SELECT * FROM products WHERE category='Різне' ORDER BY availability DESC , topsell DESC, topprice DESC,
 count DESC");
+        $query = mysqli_query($db, "SELECT * FROM user WHERE login='$user'");
+        while($row = mysqli_fetch_array($query))
+        {
+            $_SESSION['dcount'] = $row['Sell7'];
+        }
     }
     if($_GET['category']=='school')
     {
@@ -45,6 +51,11 @@ count DESC");
 count DESC";
         $resultProduct = mysqli_query($db,"SELECT * FROM products WHERE category='Шкільне приладдя' ORDER BY availability DESC , topsell DESC, topprice DESC,
 count DESC");
+        $query = mysqli_query($db, "SELECT * FROM user WHERE login='$user'");
+        while($row = mysqli_fetch_array($query))
+        {
+            $_SESSION['dcount'] = $row['Sell1'];
+        }
     }
     if($_GET['category']=='office')
     {
@@ -52,6 +63,11 @@ count DESC");
 count DESC";
         $resultProduct = mysqli_query($db,"SELECT * FROM products WHERE category='Офісне приладдя' ORDER BY availability DESC , topsell DESC, topprice DESC,
 count DESC");
+        $query = mysqli_query($db, "SELECT * FROM user WHERE login='$user'");
+        while($row = mysqli_fetch_array($query))
+        {
+            $_SESSION['dcount'] = $row['Sell2'];
+        }
     }
     if($_GET['category']=='child')
     {
@@ -59,6 +75,11 @@ count DESC");
 count DESC";
         $resultProduct = mysqli_query($db,"SELECT * FROM products WHERE category='Дитячі товари' ORDER BY availability DESC , topsell DESC, topprice DESC,
 count DESC");
+        $query = mysqli_query($db, "SELECT * FROM user WHERE login='$user'");
+        while($row = mysqli_fetch_array($query))
+        {
+            $_SESSION['dcount'] = $row['Sell3'];
+        }
     }
     if($_GET['category']=='paper')
     {
@@ -66,6 +87,11 @@ count DESC");
 count DESC";
         $resultProduct = mysqli_query($db,"SELECT * FROM products WHERE category='Зошити та блокноти' ORDER BY availability DESC , topsell DESC, topprice DESC,
 count DESC");
+        $query = mysqli_query($db, "SELECT * FROM user WHERE login='$user'");
+        while($row = mysqli_fetch_array($query))
+        {
+            $_SESSION['dcount'] = $row['Sell4'];
+        }
     }
     if($_GET['category']=='book')
     {
@@ -73,6 +99,11 @@ count DESC");
 count DESC";
         $resultProduct = mysqli_query($db,"SELECT * FROM products WHERE category='Книжки та розмальовки' ORDER BY availability DESC , topsell DESC, topprice DESC,
 count DESC");
+        $query = mysqli_query($db, "SELECT * FROM user WHERE login='$user'");
+        while($row = mysqli_fetch_array($query))
+        {
+            $_SESSION['dcount'] = $row['Sell5'];
+        }
     }
     if($_GET['category']=='decor')
     {
@@ -80,6 +111,11 @@ count DESC");
 count DESC";
         $resultProduct = mysqli_query($db,"SELECT * FROM products WHERE category='Декор' ORDER BY availability DESC , topsell DESC, topprice DESC,
 count DESC");
+        $query = mysqli_query($db, "SELECT * FROM user WHERE login='$user'");
+        while($row = mysqli_fetch_array($query))
+        {
+            $_SESSION['dcount'] = $row['Sell6'];
+        }
     }
     if($_GET['category']=='all')
     {
@@ -87,6 +123,7 @@ count DESC");
 count DESC";
         $resultProduct = mysqli_query($db,"SELECT * FROM products ORDER BY availability DESC , topsell DESC, topprice DESC,
 count DESC");
+        $_SESSION['dcount']=0;
     }
 }
 ?>
@@ -142,12 +179,13 @@ count DESC");
                       ?></p>
               </div>
               <div class="back">
-                  <p class="price"><?php echo $row['Price']?></p>
+                  <p class="price">Ціна: <?php echo $row['Price']-($row['Price']/100)*$_SESSION['dcount'];?></p>
                   <form action="deletecart.php" method="post">
                       <input type="hidden" name="id" value="<?php echo $row['Id']?>"><button type="submit" class="btn btn-outline-success btn-lg">Видалити з корзини</button>
                   </form>
 
                   <form action="totalpricecart.php" method="post">
+                      <input type="hidden" name="price" value="<?php echo $row['Price']-($row['Price']/100)*$_SESSION['dcount']?>">
                       <input type="hidden" name="id" value="<?php echo $row['Id']?>">
                       <input type="text" name="count" placeholder="Введіть кількість">
                       <button type="submit" class="btn btn-outline-success btn-lg">Підтвердити</button>
@@ -290,7 +328,7 @@ count DESC");
                               <input type="password" placeholder="Пароль" name="password" class="input" required>
                               <input type="password" placeholder=" Підтвердіть пароль" name="cpassword" class="input" required>
                               <input type='tel' placeholder="Телефон" name="phone" class="input" required>
-                              <input type="checkbox"> <span class="losh">  я лошпєд </span><br>
+                              <input type="checkbox"> <span class="losh">  Оптовий покупець </span><br>
                               <input type="submit" class="regButton" value="Реєстрація">
                           </form>
                       </div>
@@ -303,12 +341,12 @@ count DESC");
                           <!-- Картинка крестика -->
                           <img class="close" src="i/close.png" alt="" onclick="show2('none')">
                           <div class="form">
-                              <span class="losh">Увійти</span>
+                              <span class="losh">Вхід</span>
                               <form action="login.php" method="post">
-                                  <p><?php echo $_SESSION['regerror']; ?></p>
+                                  <p><?php echo $_SESSION['lregerror']; ?></p>
                                   <input type="text" placeholder="Логін" name="login" class="input" required>
                                   <input type="password" placeholder="Пароль" name="password" class="input" required>
-                                  <input type="submit" class="regButton" value="Реєстрація">
+                                  <input type="submit" class="regButton" value="Увійти">
                               </form>
                           </div>
                       </div>
@@ -406,9 +444,10 @@ count DESC");
                   ?></p>
     </div>
     <div class="back">
-      <p class="price"><?php echo $row['Price']?></p>
+      <p class="price">Ціна: <?php echo $row['Price']-($row['Price']/100)*$_SESSION['dcount'];?></p>
         <?php if(isset($user)) : ?>
       <form action="addcart.php" method="post">
+          <input type="hidden" name="price" value="<?php echo $row['Price']-($row['Price']/100)*$_SESSION['dcount'];?>">
           <input type="hidden" name="id" value="<?php echo $row['Id']?>"><button type="submit" class="btn btn-outline-success btn-lg">Додати до корзини</button>
       </form>
         <?php endif; ?>

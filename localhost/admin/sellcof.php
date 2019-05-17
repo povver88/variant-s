@@ -1,5 +1,9 @@
 <?php
 session_start();
+if($_SESSION['SuccessAdmin'] != "True")
+{
+    header('location: loginadmin.php');
+}
 $db = mysqli_connect('localhost', 'root', '', 'users');
 if (isset($_POST['login'])) {
     $login = e($_POST['login']);
