@@ -52,7 +52,7 @@ $resultProduct = mysqli_query($db,"SELECT * FROM products"); ?>
                     <li class="table-row">
                         <div class="col col-1"> <?php echo $item?> </div>
                         <div class="col col-2"><form action="userorder.php" method="post">
-                                    <input type="hidden" name="login" value="<?php echo $item?>"><input type="submit" value="More">
+                                    <input type="hidden" name="login" value="<?php echo $item?>"><input type="submit" value="Більше">
                             </form></div>
                     </li>
 

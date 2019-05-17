@@ -53,7 +53,7 @@ print_r($_SESSION['AdminError']);
     <label for="username">Login</label>
     <input name="login" type="text" class="setlogin" placeholder="Login">
     <label for="password">Password</label>
-    <input name="password" type="text" class="setpass" placeholder="Password">
+    <input name="password" type="password" class="setpass" placeholder="Password">
     <input name="log" type="submit" value="Log in">
 </form>
 </body>
