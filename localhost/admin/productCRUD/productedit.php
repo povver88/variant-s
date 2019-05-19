@@ -18,6 +18,7 @@ if (isset($_POST)) {
     $description = $_SESSION['editproduct']['Description'];
     $topprice = $_SESSION['editproduct']['TopPrice'];
     $topsell = $_SESSION['editproduct']['TopSell'];
+    $availability = $_SESSION['editproduct']['Availability'];
 
 
 
@@ -46,12 +47,23 @@ if (isset($_POST)) {
 
     if(!empty($_POST['topsell']))
     {
-        if()//ДОписати проверку на Эс присвоъти значеея
-        $topsell = intval($_POST['topsell']);
+        if($_POST['topsell']=='On')
+        {
+            $topsell = 1;
+        }
+    }
+    else{
+        $topsell = 0;
     }
     if(!empty($_POST['topprice']))
     {
-        $topprice = intval($_POST['topprice']);
+        if($_POST['topprice']=='On')
+        {
+            $topprice = 1;
+        }
+    }
+    else{
+        $topprice = 0;
     }
     if(!empty($_POST['dropinv']))
     {
@@ -78,7 +90,7 @@ if (isset($_POST)) {
         $count = e($_POST['count']);
     }
 
-    $query = "UPDATE products SET name='$name', article='$article', brend='$brend', price='$price', count='$count', category='$category', photo='$nameproduct', articlephoto='$namearticle', topprice='$topprice', topsell='$topsell', description='$description' WHERE id='$id'";
+    $query = "UPDATE products SET availability='$availability', name='$name', article='$article', brend='$brend', price='$price', count='$count', category='$category', photo='$nameproduct', articlephoto='$namearticle', topprice='$topprice', topsell='$topsell', description='$description' WHERE id='$id'";
     $results = mysqli_query($db, $query);
     $_SESSION['editproduct']['Name'] = $name;
     $_SESSION['editproduct']['Article'] = $article;
@@ -91,6 +103,7 @@ if (isset($_POST)) {
     $_SESSION['editproduct']['Description'] = $description;
     $_SESSION['editproduct']['TopPrice'] = $topprice;
     $_SESSION['editproduct']['TopSell'] = $topsell;
+    $_SESSION['editproduct']['Availability'] = $availability;
     header('location: ../productslist.php');
 }
 

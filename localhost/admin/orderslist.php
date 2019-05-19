@@ -6,14 +6,16 @@ if($_SESSION['SuccessAdmin'] != "True")
 }
 $db = mysqli_connect('localhost', 'root', '', 'users');
 $users = $_SESSION['AdminOrderUser'];
-
-foreach ($users as $item)
+if(isset($users))
 {
-$query = mysqli_query($db,"SELECT * FROM user WHERE login='$item'");
-if(mysqli_num_rows($query) == 0)
-{
-    unset($users[$item]);
-}
+    foreach ($users as $item)
+    {
+        $query = mysqli_query($db,"SELECT * FROM user WHERE login='$item'");
+        if(mysqli_num_rows($query) == 0)
+        {
+            unset($users[$item]);
+        }
+    }
 }
 
 $resultProduct = mysqli_query($db,"SELECT * FROM products"); ?>
