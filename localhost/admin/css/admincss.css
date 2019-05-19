@@ -183,6 +183,12 @@ main {
 #left_bar {
     width: 19.16vw;
     padding-right: 2vw;
+    margin-left: 40%;
+    margin-top: 100px;
+}
+.baton{
+    margin-top: 20px;
+    margin-left: 95%;
 }
 
 #rigth_bar {
