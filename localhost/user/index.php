@@ -129,8 +129,8 @@ count DESC");
                 <svg version="1.1" id="next" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 477.175 477.175" style="enable-background:new 0 0 477.175 477.175;" xml:space="preserve">
                     <g>
                         <path d="M360.731,229.075l-225.1-225.1c-5.3-5.3-13.8-5.3-19.1,0s-5.3,13.8,0,19.1l215.5,215.5l-215.5,215.5
-      		    c-5.3,5.3-5.3,13.8,0,19.1c2.6,2.6,6.1,4,9.5,4c3.4,0,6.9-1.3,9.5-4l225.1-225.1C365.931,242.875,365.931,234.275,360.731,229.075z
-      		    " />
+      		                                c-5.3,5.3-5.3,13.8,0,19.1c2.6,2.6,6.1,4,9.5,4c3.4,0,6.9-1.3,9.5-4l225.1-225.1C365.931,242.875,365.931,234.275,360.731,229.075z
+      		                                " />
 
                 </svg>
 
@@ -183,21 +183,132 @@ count DESC");
 
                 <div class="main_flex__nowrap flex__align-items_center">
                     <style>
+                        .container {
+                            font-family: Open Sans Condensed;
+                            width: 400px;
+                            margin: 0 auto;
+                            display: block;
+                            background: #FFF;
+                            padding: 10px 50px;
+                        }
+
+                        h2 {
+                            margin-bottom: 30px;
+                            line-height: 35px;
+                            text-transform: uppercase;
+                        }
+
+                        h2 small {
+                            font-weight: normal;
+                            color: #ccc;
+                            display: block;
+                        }
+
+                        /* form starting stylings ------------------------------- */
+                        .group {
+                            position: relative;
+                            margin-bottom: 30px;
+                        }
+
+                        input {
+                            font-size: 16px;
+                            padding: 10px;
+                            display: block;
+                            width: 300px;
+                            border: none;
+                            border-bottom: 1px solid #ccc;
+                        }
+
+                        input:focus {
+                            outline: none;
+                        }
+
+                        /* LABEL ======================================= */
+                        label {
+                            color: #999;
+                            font-size: 18px;
+                            position: absolute;
+                            pointer-events: none;
+                            left: 10px;
+                            top: 15px;
+                            transition: 0.2s ease all;
+                            -moz-transition: 0.2s ease all;
+                            -webkit-transition: 0.2s ease all;
+                        }
+
+                        /* active state */
+                        input:focus~label,
+                        input:valid~label {
+                            top: -15px;
+                            font-size: 14px;
+                            color: #5264AE;
+                        }
+
+                        /* BOTTOM BARS ================================= */
+                        .bar {
+                            position: relative;
+                            display: block;
+                            width: 320px;
+                        }
+
+                        .bar:before,
+                        .bar:after {
+                            content: "";
+                            height: 2px;
+                            width: 0;
+                            bottom: 0;
+                            position: absolute;
+                            background: #5264AE;
+                            transition: 0.2s ease all;
+                            -moz-transition: 0.2s ease all;
+                            -webkit-transition: 0.2s ease all;
+                        }
+
+                        .bar:before {
+                            left: 50%;
+                        }
+
+                        .bar:after {
+                            right: 50%;
+                        }
+
+                        /* active state */
+                        input:focus~.bar:before,
+                        input:focus~.bar:after {
+                            width: 50%;
+                        }
+
                         .regButton {
-                            background: #fff;
-                            border: 1px solid #ccc;
-                            border-radius: 3px;
-                            padding: 6px 24px;
-                            cursor: pointer;
+                            text-decoration: none;
+                            outline: none;
+                            display: inline-block;
+                            width: 140px;
+                            height: 45px;
+                            border-radius: 45px;
+                            margin: 10px 20px;
+                            margin-bottom: 
+                            font-family: 'Montserrat', sans-serif;
+                            font-size: 11px;
+                            text-transform: uppercase;
+                            text-align: center;
+                            letter-spacing: 3px;
+                            font-weight: 600;
+                            color: #524f4e;
+                            background: white;
+                            box-shadow: 0 8px 15px rgba(0, 0, 0, .1);
+                            transition: .3s;
                         }
 
                         .regButton:hover {
-                            background: #ccc;
+                            background: #2EE59D;
+                            box-shadow: 0 15px 20px rgba(46, 229, 157, .4);
+                            color: white;
+                            transform: translateY(-7px);
                         }
 
                         #window {
                             width: 350px;
-                            height: 420px;
+                            height: 400px;
                             margin: 40px auto;
                             background: #fff;
                             border: 1px solid #fff;
@@ -213,7 +324,7 @@ count DESC");
 
                         #window2 {
                             width: 350px;
-                            height: 420px;
+                            height: 250px;
                             margin: 40px auto;
                             background: #fff;
                             border: 1px solid #fff;
@@ -295,14 +406,14 @@ count DESC");
                                 <!-- Картинка крестика -->
                                 <img class="close" src="i/close.png" alt="" onclick="show('none')">
                                 <div class="form">
-                                    <span class="losh">Реєстрація</span>
+                                    <span class="losh"></span>
                                     <form action="register.php" method="post">
                                         <p><?php echo $_SESSION['regerror']; ?></p>
                                         <input type="text" placeholder="Логін" name="login" class="input" required>
                                         <input type="email" placeholder="E-mail (необов'язково)" name="email" class="input">
                                         <input type="password" placeholder="Пароль" name="password" class="input" required>
-                                        <input type="password" placeholder=" Підтвердіть пароль" name="cpassword" class="input" required>
-                                        <input type='tel' placeholder="Телефон" name="phone" class="input" required>
+                                        <input type="password" placeholder="Підтвердіть пароль" name="cpassword" class="input" required>
+                                        <input type="tel" placeholder="Телефон" name="phone" class="input" required>
                                         <input type="checkbox"> <span class="losh"> Оптовий покупець </span><br>
                                         <input type="submit" class="regButton" value="Реєстрація">
                                     </form>
@@ -319,9 +430,19 @@ count DESC");
                                     <span class="losh">Вхід</span>
                                     <form action="login.php" method="post">
                                         <p><?php echo $_SESSION['lregerror']; ?></p>
-                                        <input type="text" placeholder="Логін" name="login" class="input" required>
-                                        <input type="password" placeholder="Пароль" name="password" class="input" required>
+                                        <div class="group">
+                                            <input type="text" required>
+                                            <span class="bar"></span>
+                                            <label>Ім'я</label>
+                                        </div>
+
+                                        <div class="group">
+                                            <input type="password" required>
+                                            <span class="bar"></span>
+                                            <label>Пароль</label>
+                                        </div>
                                         <input type="submit" class="regButton" value="Увійти">
+
                                     </form>
                                 </div>
                             </div>
@@ -343,10 +464,7 @@ count DESC");
                             <a href="logout.php"><button class="regButton">Вийти</button>
                             </a>
                         <?php endif; ?>
-                        <div id="location">
-                            Мова: <a href="#"><img class="language" src="img/ukraine.png" alt="uk"></a>
-                            <a href="#"><img class="language" src="img/russia.png" alt="ru"></a>
-                        </div>
+
 
                 </div>
 
@@ -453,12 +571,14 @@ count DESC");
 
     </main>
     <footer>
-        <div class="wrap">
-
-            <div>
-                <nav id="footer_nav" class="main_flex__nowrap flex__jcontent_center flex__align-items_center">
-                    <li><a href="#">Про нас пишуть</a></li>
-                </nav>
+        <div class="container">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="..." alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
             </div>
         </div>
 
