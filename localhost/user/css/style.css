@@ -12,16 +12,16 @@ body {
   font-size: 1.14vmax;
   line-height: 1.33vmax;
 }
-
+.losh {
+  font-size: large;
+  color: black;
+}
 .wrap {
   width: 84vw;
   margin: 0 auto;
   position: relative;
 }
 
-.losh {
-  color: black;
-}
 .dark {
   background-color: #7F5959;
   color: #fff;
@@ -98,6 +98,11 @@ div.btn {
 #logo a {
   display: block;
   text-decoration: none;
+}
+
+#logo img{
+  width: 13vw;
+  height: 2.5vmax;
 }
 
 #cart {
@@ -424,7 +429,7 @@ p.price {
 footer{
   width: 100%;
   min-height: 20.25vmax;
-  background-color: #7F5959;
+  background-color: rgba(80, 88, 91, .9);
   padding-top: 5vmax;
   padding-bottom: 5vmax;
 }
@@ -575,4 +580,29 @@ margin-right: 10vh;
 
 .second-e {
   margin-top: 1vmax;
+}
+
+.regButton2 {
+  text-decoration: none;
+  outline: none;
+  display: inline-block;
+  width: 20vw;
+  height: 4vmax;
+  border-radius: 3.75vmax;
+  margin: 0.83vw 1.66vmax;
+    font-family: 'Montserrat', sans-serif;
+  font-size: 1vmax;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 0.25vw;
+  font-weight: 600;
+  color: #524f4e;
+  background: white;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, .1);
+  transition: .3s;
+}
+
+
+@media screen and ( max-width: 600px) {
+  
 }

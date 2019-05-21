@@ -129,8 +129,8 @@ count DESC");
                 <svg version="1.1" id="next" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 477.175 477.175" style="enable-background:new 0 0 477.175 477.175;" xml:space="preserve">
                     <g>
                         <path d="M360.731,229.075l-225.1-225.1c-5.3-5.3-13.8-5.3-19.1,0s-5.3,13.8,0,19.1l215.5,215.5l-215.5,215.5
-      		                                c-5.3,5.3-5.3,13.8,0,19.1c2.6,2.6,6.1,4,9.5,4c3.4,0,6.9-1.3,9.5-4l225.1-225.1C365.931,242.875,365.931,234.275,360.731,229.075z
-      		                                " />
+      		                                                            c-5.3,5.3-5.3,13.8,0,19.1c2.6,2.6,6.1,4,9.5,4c3.4,0,6.9-1.3,9.5-4l225.1-225.1C365.931,242.875,365.931,234.275,360.731,229.075z
+      		                                                            " />
 
                 </svg>
 
@@ -185,7 +185,7 @@ count DESC");
                     <style>
                         .container {
                             font-family: Open Sans Condensed;
-                            width: 400px;
+                            width: 25vw;
                             margin: 0 auto;
                             display: block;
                             background: #FFF;
@@ -193,8 +193,8 @@ count DESC");
                         }
 
                         h2 {
-                            margin-bottom: 30px;
-                            line-height: 35px;
+                            margin-bottom: 1.87vmax;
+                            line-height: 2.18vmax;
                             text-transform: uppercase;
                         }
 
@@ -214,7 +214,7 @@ count DESC");
                             font-size: 16px;
                             padding: 10px;
                             display: block;
-                            width: 300px;
+                            width: 250px;
                             border: none;
                             border-bottom: 1px solid #ccc;
                         }
@@ -248,7 +248,7 @@ count DESC");
                         .bar {
                             position: relative;
                             display: block;
-                            width: 320px;
+                            width: 20vw;
                         }
 
                         .bar:before,
@@ -265,11 +265,11 @@ count DESC");
                         }
 
                         .bar:before {
-                            left: 50%;
+                            left: 23%;
                         }
 
                         .bar:after {
-                            right: 50%;
+                            right: 53%;
                         }
 
                         /* active state */
@@ -282,22 +282,24 @@ count DESC");
                             text-decoration: none;
                             outline: none;
                             display: inline-block;
-                            width: 140px;
-                            height: 45px;
-                            border-radius: 45px;
-                            margin: 10px 20px;
-                            margin-bottom: 
-                            font-family: 'Montserrat', sans-serif;
-                            font-size: 11px;
+                            width: 8vw;
+                            height: 2.3vmax;
+                            border-radius: 3.75vmax;
+                            margin: 0.83vw 1.66vmax;
+                            margin-bottom:
+                                font-family: 'Montserrat', sans-serif;
+                            font-size: 0.75vmax;
                             text-transform: uppercase;
                             text-align: center;
-                            letter-spacing: 3px;
+                            letter-spacing: 0.25vw;
                             font-weight: 600;
                             color: #524f4e;
                             background: white;
                             box-shadow: 0 8px 15px rgba(0, 0, 0, .1);
                             transition: .3s;
                         }
+
+
 
                         .regButton:hover {
                             background: #2EE59D;
@@ -307,8 +309,8 @@ count DESC");
                         }
 
                         #window {
-                            width: 350px;
-                            height: 400px;
+                            width: 21.21vw;
+                            height: 23.03vmax;
                             margin: 40px auto;
                             background: #fff;
                             border: 1px solid #fff;
@@ -323,9 +325,9 @@ count DESC");
                         }
 
                         #window2 {
-                            width: 350px;
-                            height: 250px;
-                            margin: 40px auto;
+                            width: 21.21vw;
+                            height: 16.06vmax;
+                            margin: 2.42vmax auto;
                             background: #fff;
                             border: 1px solid #fff;
                             border-radius: 15px;
@@ -339,26 +341,20 @@ count DESC");
                         }
 
                         .form {
-                            width: 275px;
+                            width: 16.66vw;
                             margin: -15px auto 20px auto;
                             text-align: center;
                         }
 
-                        .input {
-                            width: 260px;
-                            padding: 5px;
-                            margin-bottom: 10px;
-                        }
-
                         .radio {
-                            margin-bottom: 10px;
+                            margin-bottom: 0.6vmax;
                         }
 
                         .close {
-                            margin: 10px 0 0 320px;
+                            margin: 0.6vmax 0 0 19.39vmax;
                             cursor: pointer;
                             border: 1px solid #ccc;
-                            padding: 2px;
+                            padding: 0.12vmax;
                             background: #ccc;
                         }
 
@@ -368,7 +364,7 @@ count DESC");
 
                         #gray {
                             opacity: 0.8;
-                            padding: 15px;
+                            padding: 0.9vmax;
                             background-color: rgba(1, 1, 1, 0.75);
                             position: fixed;
                             left: 0;
@@ -393,6 +389,11 @@ count DESC");
                             z-index: 100;
                             overflow: auto;
                         }
+
+                        .losh {
+                            color: black;
+
+                        }
                     </style>
 
 
@@ -400,10 +401,8 @@ count DESC");
                         <?php if (empty($user)) : ?>
                             <center><button onclick="show('block')" class="regButton">Реєстрація</button>
                             </center>
-                            <!-- Задний прозрачный фон -->
                             <div onclick="show('none')" id="gray"></div>
                             <div id="window">
-                                <!-- Картинка крестика -->
                                 <img class="close" src="i/close.png" alt="" onclick="show('none')">
                                 <div class="form">
                                     <span class="losh"></span>
@@ -414,7 +413,7 @@ count DESC");
                                         <input type="password" placeholder="Пароль" name="password" class="input" required>
                                         <input type="password" placeholder="Підтвердіть пароль" name="cpassword" class="input" required>
                                         <input type="tel" placeholder="Телефон" name="phone" class="input" required>
-                                        <input type="checkbox"> <span class="losh"> Оптовий покупець </span><br>
+                                        <input type="checkbox" class="checkbox3"> <span class="losh"> Оптовик </span><br>
                                         <input type="submit" class="regButton" value="Реєстрація">
                                     </form>
                                 </div>
@@ -433,7 +432,7 @@ count DESC");
                                         <div class="group">
                                             <input type="text" required>
                                             <span class="bar"></span>
-                                            <label>Ім'я</label>
+                                            <label>Логін</label>
                                         </div>
 
                                         <div class="group">
