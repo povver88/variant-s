@@ -1,0 +1,76 @@
+<?php
+session_start();
+if($_SESSION['SuccessAdmin'] == "True" OR $_SESSION['user']['Usertype'] == 'Manager') {
+}
+else{
+    header('location: loginadmin.php');
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Панель адміністратора</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/admincss.css">
+  <link rel="stylesheet" href="css/jquery-ui-1.9.2.custom.css">
+  <link href="https://fonts.googleapis.com/css?family=PT+Serif&amp;subset=cyrillic,cyrillic-ext,latin-ext" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+  <script src="js/jquery-1.8.3.js"></script>
+  <script src="js/jquery-ui-1.9.2.custom.min.js"></script>
+  <script src="js/control.js"></script>
+
+
+</head>
+
+<body>
+<a href="logout.php"><input class="baton btn btn-primary" type="button" value="Вийти"></a>
+    <div id="left_bar">
+
+      <div id="category" class="box">
+
+        <div class="list_box">
+
+          <div class="title_box main_flex__nowrap flex__align-items_center flex__jcontent_between">
+            <p>Користувачі</p>
+            <img src="img/right-arrow.png" alt="arrow">
+          </div>
+
+          <div class="list_link">
+            <nav>
+              <li><a href="optlist.php">Оптовики</a></li>
+              <li><a href="orderslist.php">Замовлення</a></li>
+              <li><a href="selllist.php">Знижки</a></li>
+              <li><a href="userslist.php">Менеджери</a></li>
+            </nav>
+          </div>
+
+        </div>
+
+        <div class="list_box">
+
+          <div class="title_box main_flex__nowrap flex__align-items_center flex__jcontent_between">
+            <p>Продукти</p>
+            <img src="img/right-arrow.png" alt="arrow">
+          </div>
+
+          <div class="list_link">
+            <nav>
+              <li><a href="createproduct.php">Створити продукти</a></li>
+              <li><a href="productslist.php">Продукти</a></li>
+                <li><a href="urlaboutus.php">Про нас пишуть</a></li>
+            </nav>
+          </div>
+
+        </div>
+         
+    </div>
+      </div>
+      
+
+</body>
+
+</html>

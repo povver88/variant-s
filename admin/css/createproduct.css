@@ -1,0 +1,27 @@
+.btn:hover {
+	cursor: pointer;
+}
+
+.submit {
+	width: 90%;
+	height: 50px;
+	margin-top: 40px;
+	margin-left: 5%;
+	margin-right: 5%;
+	text-align: center;
+}
+
+.descript {
+	height: 250px !important;
+	width: 500px !important;
+}
+
+.dropdownbut {
+	margin-left: 1.5%;
+}
+
+.limiter{
+	margin-right: 30%;
+	width: 50%;
+	margin-left: 20%;
+}
